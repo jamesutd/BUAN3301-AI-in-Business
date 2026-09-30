@@ -10,7 +10,6 @@
   --bg:#f7f8fa; --card:#ffffff; --text:#202124; --muted:#5f6368;
   --line:#dfe3e8; --accent:#1f4b7a; --soft:#eef4fa;
 }
-  
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body {
@@ -103,8 +102,8 @@ footer {
 <div class="header-inner">
 <div class="kicker">Textbook-Verified Study Guide</div>
 <h1>BUAN 3301: AI in Business — Key Concepts and Definitions</h1>
-<div class="subtitle">A class-by-class review page for BUAN 3301: AI in Business, designed to contain the key concepts and explanations needed for the corresponding class exercises.</div>
-<div class="purpose"><p><strong>Study purpose. </strong>This guide is organized by BUAN 3301: AI in Business class sessions and is intended to serve as the concept-and-definition review material for exams. It uses the terminology, distinctions, and explanations supported by the class textbook materials rather than adding outside concepts.</p></div>
+
+
 </div>
 </header>
 <nav class="toolbar">
@@ -348,7 +347,6 @@ footer {
 <h3>Purpose of Examples in Few-Shot Prompting</h3>
 <p>Examples help clarify task expectations and show the model the desired output pattern. They can increase the accuracy and consistency of responses when the required format or interpretation might otherwise be ambiguous.</p>
 </article>
-
 <article class="concept" data-search="limits of few-shot prompting few-shot examples provide only limited contextual depth. they may be inadequate for nuanced, dynamic, or complex multi-step situations, and the model may imitate patterns in examples rather than truly learn a new rule.">
 <h3>Limits of Few-Shot Prompting</h3>
 <p>Few-shot examples provide only limited contextual depth. They may be inadequate for nuanced, dynamic, or complex multi-step situations, and the model may imitate patterns in examples rather than truly learn a new rule.</p>
@@ -361,7 +359,6 @@ footer {
 <h3>Advantage of Role-Playing</h3>
 <p>Role-playing helps the model generate responses that are more context-specific and appropriate to the assigned role, including differences in expertise, tone, and communication style.</p>
 </article>
-
 <article class="concept" data-search="chain-of-thought (cot) prompting a technique designed to guide an llm through a multi-step reasoning process. instead of jumping directly to a conclusion, the model is encouraged to work through intermediate steps.">
 <h3>Chain-of-Thought (CoT) Prompting</h3>
 <p>A technique designed to guide an LLM through a multi-step reasoning process. Instead of jumping directly to a conclusion, the model is encouraged to work through intermediate steps.</p>
@@ -370,8 +367,6 @@ footer {
 <h3>Few-Shot CoT</h3>
 <p>Provides worked examples that demonstrate the reasoning steps as well as the final answer. The examples show a reasoning structure that can be applied to similar tasks.</p>
 </article>
-
-
 </div>
 </section>
 <section class="chapter" id="chapter-4">
@@ -558,7 +553,6 @@ footer {
 <h3>RAG for Domain-Specific Knowledge</h3>
 <p>Organizations can update an external knowledge base with specialized or changing information and retrieve it at query time without retraining the LLM each time the knowledge changes.</p>
 </article>
-
 <article class="concept" data-search="rag limitation rag performance depends on the quality, freshness, chunking, indexing, and retrieval of the knowledge base; poor retrieval can still lead to incomplete or inaccurate answers.">
 <h3>RAG Limitation</h3>
 <p>RAG performance depends on the quality, freshness, chunking, indexing, and retrieval of the knowledge base; poor retrieval can still lead to incomplete or inaccurate answers.</p>
@@ -569,7 +563,7 @@ footer {
 <div class="chapter-head">
 <div class="chapter-number">Class 6</div>
 <h2>RAG Techniques &amp; Evaluation</h2>
-<div class="count">36 concepts</div>
+<div class="count">33 concepts</div>
 </div>
 <div class="concept-grid">
 <article class="concept" data-search="three rag stages rag challenges and improvements can be organized into pre-retrieval, retrieval, and post-retrieval stages.">
@@ -628,12 +622,10 @@ footer {
 <h3>RAG Fusion</h3>
 <p>Generating multiple related query variations, retrieving results for each, and combining/reranking the retrieval results to improve coverage and relevance.</p>
 </article>
-
 <article class="concept" data-search="hybrid search combining keyword retrieval with semantic/vector retrieval; this can recover both exact terminology and conceptually related documents, making retrieval more robust than relying on only one method.">
 <h3>Hybrid Search</h3>
 <p>Combining keyword retrieval with semantic/vector retrieval; this can recover both exact terminology and conceptually related documents, making retrieval more robust than relying on only one method.</p>
 </article>
-
 <article class="concept" data-search="approximate nearest neighbor (ann) search efficiently finding vectors that are approximately closest to the query vector without exhaustively comparing every vector in a large database.">
 <h3>Approximate Nearest Neighbor (ANN) Search</h3>
 <p>Efficiently finding vectors that are approximately closest to the query vector without exhaustively comparing every vector in a large database.</p>
@@ -669,18 +661,6 @@ footer {
 <article class="concept" data-search="recall the proportion of all relevant documents that the system successfully retrieves: relevant retrieved items divided by all relevant items.">
 <h3>Recall</h3>
 <p>The proportion of all relevant documents that the system successfully retrieves: relevant retrieved items divided by all relevant items.</p>
-</article>
-<article class="concept" data-search="f1 score the harmonic mean of precision and recall, used when both retrieval accuracy and completeness matter.">
-<h3>F1 Score</h3>
-<p>The harmonic mean of precision and recall, used when both retrieval accuracy and completeness matter.</p>
-</article>
-<article class="concept" data-search="mrr mean reciprocal rank; a ranking metric that rewards systems for placing the first relevant result near the top.">
-<h3>MRR</h3>
-<p>Mean Reciprocal Rank; a ranking metric that rewards systems for placing the first relevant result near the top.</p>
-</article>
-<article class="concept" data-search="ndcg normalized discounted cumulative gain; a ranking metric that considers both graded relevance and the positions of results.">
-<h3>NDCG</h3>
-<p>Normalized Discounted Cumulative Gain; a ranking metric that considers both graded relevance and the positions of results.</p>
 </article>
 <article class="concept" data-search="latency the response time required to process a query.">
 <h3>Latency</h3>
