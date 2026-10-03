@@ -1,719 +1,1103 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>BUAN 3301: AI in Business — Key Concepts and Definitions</title>
-<style>
-:root {
-  --bg:#f7f8fa; --card:#ffffff; --text:#202124; --muted:#5f6368;
-  --line:#dfe3e8; --accent:#1f4b7a; --soft:#eef4fa;
-}
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  margin:0; font-family: Arial, Helvetica, sans-serif;
-  color:var(--text); background:var(--bg); line-height:1.58;
-}
-header {
-  background:#fff; border-bottom:1px solid var(--line);
-  padding:42px 24px 30px;
-}
-.header-inner, main, .toolbar-inner { max-width:1050px; margin:auto; }
-.kicker {
-  text-transform:uppercase; letter-spacing:.12em; font-size:.76rem;
-  font-weight:700; color:var(--accent);
-}
-h1 { margin:.3rem 0 .5rem; font-size:2.15rem; line-height:1.18; }
-.subtitle { color:var(--muted); font-size:1.03rem; max-width:800px; }
-.purpose {
-  margin-top:22px; padding:16px 18px; background:var(--soft);
-  border-left:4px solid var(--accent); border-radius:6px;
-}
-.purpose p { margin:.35rem 0; }
-.toolbar {
-  position:sticky; top:0; z-index:10; background:rgba(255,255,255,.96);
-  border-bottom:1px solid var(--line); backdrop-filter:blur(8px);
-}
-.toolbar-inner {
-  display:flex; gap:10px; align-items:center; padding:10px 24px;
-  overflow-x:auto;
-}
-.toolbar a {
-  white-space:nowrap; text-decoration:none; color:var(--accent);
-  border:1px solid var(--line); padding:7px 11px; border-radius:18px;
-  background:#fff; font-size:.9rem;
-}
-#search {
-  margin-left:auto; min-width:230px; padding:8px 11px;
-  border:1px solid var(--line); border-radius:18px; font-size:.9rem;
-}
-main { padding:28px 24px 60px; }
-.chapter {
-  background:var(--card); border:1px solid var(--line);
-  border-radius:10px; margin:0 0 28px; overflow:hidden;
-}
-.chapter-head {
-  padding:22px 24px 18px; border-bottom:1px solid var(--line);
-  background:#fbfcfd; position:relative;
-}
-.chapter-number {
-  color:var(--accent); font-size:.8rem; text-transform:uppercase;
-  letter-spacing:.1em; font-weight:700;
-}
-h2 { margin:.25rem 0 0; font-size:1.55rem; }
-.count {
-  position:absolute; right:24px; top:28px; color:var(--muted); font-size:.86rem;
-}
-.concept-grid {
-  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
-}
-.concept {
-  padding:18px 22px; border-bottom:1px solid var(--line);
-}
-.concept:nth-child(odd) { border-right:1px solid var(--line); }
-.concept h3 {
-  margin:0 0 7px; font-size:1rem; color:#172b3f;
-}
-.concept p { margin:0; color:#3c4043; font-size:.95rem; }
-.hidden { display:none; }
-footer {
-  text-align:center; color:var(--muted); font-size:.84rem; padding:0 20px 35px;
-}
-@media (max-width:720px) {
-  h1 { font-size:1.7rem; }
-  .concept-grid { grid-template-columns:1fr; }
-  .concept:nth-child(odd) { border-right:none; }
-  .count { position:static; margin-top:6px; }
-  #search { min-width:170px; }
-}
-@media print {
-  .toolbar { display:none; }
-  body { background:#fff; }
-  header { padding-top:15px; }
-  .chapter { break-inside:auto; border:none; }
-  .concept { break-inside:avoid; }
-}
-</style>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>BUAN 3301: AI in Business — Key Concepts and Definitions</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #202124;
+      --muted: #5f6368;
+      --line: #dfe3e8;
+      --accent: #1f4b7a;
+      --soft: #eef4fa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.58;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      padding: 42px 24px 30px;
+    }
+
+    .header-inner,
+    main,
+    .toolbar-inner {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .76rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    h1 {
+      margin: .3rem 0 .5rem;
+      font-size: 2.15rem;
+      line-height: 1.18;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.03rem;
+      max-width: 800px;
+    }
+
+    .purpose {
+      margin-top: 22px;
+      padding: 16px 18px;
+      background: var(--soft);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+    }
+
+    .purpose p {
+      margin: .35rem 0;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .toolbar-inner {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 24px;
+      overflow-x: auto;
+    }
+
+    .toolbar a {
+      white-space: nowrap;
+      text-decoration: none;
+      color: var(--accent);
+      border: 1px solid var(--line);
+      padding: 7px 11px;
+      border-radius: 18px;
+      background: #fff;
+      font-size: .9rem;
+    }
+
+    #search {
+      margin-left: auto;
+      min-width: 230px;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      font-size: .9rem;
+    }
+
+    main {
+      padding: 28px 24px 60px;
+    }
+
+    .chapter {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      margin: 0 0 28px;
+      overflow: hidden;
+    }
+
+    .chapter-head {
+      padding: 22px 24px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfd;
+      position: relative;
+    }
+
+    .chapter-number {
+      color: var(--accent);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: .25rem 0 0;
+      font-size: 1.55rem;
+    }
+
+    .count {
+      position: absolute;
+      right: 24px;
+      top: 28px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .concept {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .concept:nth-child(odd) {
+      border-right: 1px solid var(--line);
+    }
+
+    .concept h3 {
+      margin: 0 0 7px;
+      font-size: 1rem;
+      color: #172b3f;
+    }
+
+    .concept p {
+      margin: 0;
+      color: #3c4043;
+      font-size: .95rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .84rem;
+      padding: 0 20px 35px;
+    }
+
+    @media (max-width:720px) {
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .concept:nth-child(odd) {
+        border-right: none;
+      }
+
+      .count {
+        position: static;
+        margin-top: 6px;
+      }
+
+      #search {
+        min-width: 170px;
+      }
+    }
+
+    @media print {
+      .toolbar {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      header {
+        padding-top: 15px;
+      }
+
+      .chapter {
+        break-inside: auto;
+        border: none;
+      }
+
+      .concept {
+        break-inside: avoid;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-<div class="header-inner">
-<div class="kicker">Textbook-Verified Study Guide</div>
-<h1>BUAN 3301: AI in Business — Key Concepts and Definitions</h1>
+  <header>
+    <div class="header-inner">
+      <div class="kicker">Textbook-Verified Study Guide</div>
+      <h1>BUAN 3301: AI in Business — Key Concepts and Definitions</h1>
+      <div class="subtitle">A class-by-class review page for BUAN 3301: AI in Business, designed to contain the key
+        concepts and explanations needed for the corresponding class exercises.</div>
+      <div class="purpose">
+        <p><strong>Study purpose. </strong>This guide is organized by BUAN 3301: AI in Business class sessions and is
+          intended to serve as the sole concept-and-definition review material for the Class 1–6 exercises. It uses the
+          terminology, distinctions, and explanations supported by the class textbook materials rather than adding
+          outside concepts.</p>
+        <p><strong>Coverage rule. </strong>Each class section includes the concepts needed to reason through its
+          corresponding exercises. The guide explains the concepts but does not provide an answer key.</p>
+      </div>
+    </div>
+  </header>
+  <nav class="toolbar">
+    <div class="toolbar-inner">
+      <a href="#chapter-1">Class 1</a>
+      <a href="#chapter-2">Class 2</a>
+      <a href="#chapter-3">Class 3</a>
+      <a href="#chapter-4">Class 4</a>
+      <a href="#chapter-5">Class 5</a>
+      <a href="#chapter-6">Class 6</a>
+      <input aria-label="Search concepts" id="search" placeholder="Search concepts…" type="search" />
+    </div>
+  </nav>
+  <main>
+    <section class="chapter" id="chapter-1">
+      <div class="chapter-head">
+        <div class="chapter-number">Class 1</div>
+        <h2>Introduction to Generative AI</h2>
+        <div class="count">19 concepts</div>
+      </div>
+      <div class="concept-grid">
+        <article class="concept"
+          data-search="generative ai (genai) ai models designed to generate original content such as text, images, audio, video, or code from patterns learned from large-scale training data.">
+          <h3>Generative AI (GenAI)</h3>
+          <p>AI models designed to generate original content such as text, images, audio, video, or code from patterns
+            learned from large-scale training data.</p>
+        </article>
+        <article class="concept"
+          data-search="predictive ai ai focused on predicting outcomes, classifying information, detecting anomalies, or forecasting rather than creating new content.">
+          <h3>Predictive AI</h3>
+          <p>AI focused on predicting outcomes, classifying information, detecting anomalies, or forecasting rather than
+            creating new content.</p>
+        </article>
+        <article class="concept"
+          data-search="symbolic ai an early ai approach that represents knowledge with symbols and uses explicit, human-written rules and logic to reason.">
+          <h3>Symbolic AI</h3>
+          <p>An early AI approach that represents knowledge with symbols and uses explicit, human-written rules and
+            logic to reason.</p>
+        </article>
+        <article class="concept"
+          data-search="limitations of symbolic ai rule-based systems are difficult to scale to complex real-world situations, depend on manually encoded knowledge, and are brittle when they encounter situations not covered by their rules.">
+          <h3>Limitations of Symbolic AI</h3>
+          <p>Rule-based systems are difficult to scale to complex real-world situations, depend on manually encoded
+            knowledge, and are brittle when they encounter situations not covered by their rules.</p>
+        </article>
+        <article class="concept"
+          data-search="moravec's paradox the observation that tasks humans regard as intellectually difficult, such as formal reasoning, can be relatively easy for computers, while perception and sensorimotor skills that humans perform effortlessly can be computationally difficult.">
+          <h3>Moravec's Paradox</h3>
+          <p>The observation that tasks humans regard as intellectually difficult, such as formal reasoning, can be
+            relatively easy for computers, while perception and sensorimotor skills that humans perform effortlessly can
+            be computationally difficult.</p>
+        </article>
+        <article class="concept"
+          data-search="statistical machine learning an approach in which models learn patterns and relationships from training data rather than relying on explicitly programmed rules.">
+          <h3>Statistical Machine Learning</h3>
+          <p>An approach in which models learn patterns and relationships from training data rather than relying on
+            explicitly programmed rules.</p>
+        </article>
+        <article class="concept"
+          data-search="deep learning machine learning based on multilayer neural networks that learn increasingly useful representations from large amounts of data.">
+          <h3>Deep Learning</h3>
+          <p>Machine learning based on multilayer neural networks that learn increasingly useful representations from
+            large amounts of data.</p>
+        </article>
+        <article class="concept"
+          data-search="foundation model (fm) a model pretrained on broad data at scale that can be adapted to many downstream tasks rather than being built for only one narrow task.">
+          <h3>Foundation Model (FM)</h3>
+          <p>A model pretrained on broad data at scale that can be adapted to many downstream tasks rather than being
+            built for only one narrow task.</p>
+        </article>
+        <article class="concept"
+          data-search="large language model (llm) a large neural language model trained on extensive text data to learn language patterns and generate or process language.">
+          <h3>Large Language Model (LLM)</h3>
+          <p>A large neural language model trained on extensive text data to learn language patterns and generate or
+            process language.</p>
+        </article>
+        <article class="concept"
+          data-search="pre-training large-scale initial training through which a model learns broad patterns and knowledge from massive datasets before task-specific adaptation.">
+          <h3>Pre-training</h3>
+          <p>Large-scale initial training through which a model learns broad patterns and knowledge from massive
+            datasets before task-specific adaptation.</p>
+        </article>
+        <article class="concept"
+          data-search="why pre-training reduces deployment cost a single pretrained foundation model can be reused and adapted for many tasks, avoiding the need to build and train a separate model from scratch for every application.">
+          <h3>Why Pre-training Reduces Deployment Cost</h3>
+          <p>A single pretrained foundation model can be reused and adapted for many tasks, avoiding the need to build
+            and train a separate model from scratch for every application.</p>
+        </article>
+        <article class="concept"
+          data-search="transformer a neural architecture based on attention that can efficiently model relationships among tokens, including long-range dependencies.">
+          <h3>Transformer</h3>
+          <p>A neural architecture based on attention that can efficiently model relationships among tokens, including
+            long-range dependencies.</p>
+        </article>
+        <article class="concept"
+          data-search="generative ai as a new era modern genai moves beyond prediction and classification to creating new content and supporting natural-language interaction, allowing general-purpose pretrained models to be adapted across many tasks.">
+          <h3>Generative AI as a New Era</h3>
+          <p>Modern GenAI moves beyond prediction and classification to creating new content and supporting
+            natural-language interaction, allowing general-purpose pretrained models to be adapted across many tasks.
+          </p>
+        </article>
+        <article class="concept"
+          data-search="natural-language interface users can interact with genai in everyday language instead of needing specialized programming or technical interfaces, lowering barriers to ai use.">
+          <h3>Natural-Language Interface</h3>
+          <p>Users can interact with GenAI in everyday language instead of needing specialized programming or technical
+            interfaces, lowering barriers to AI use.</p>
+        </article>
+        <article class="concept"
+          data-search="prompt engineering designing and refining the instructions supplied to a pretrained model to guide its output without changing the model's underlying parameters.">
+          <h3>Prompt Engineering</h3>
+          <p>Designing and refining the instructions supplied to a pretrained model to guide its output without changing
+            the model's underlying parameters.</p>
+        </article>
+        <article class="concept"
+          data-search="fine-tuning further training a pretrained model on domain- or task-specific data to adapt its behavior and improve performance for a particular use case.">
+          <h3>Fine-Tuning</h3>
+          <p>Further training a pretrained model on domain- or task-specific data to adapt its behavior and improve
+            performance for a particular use case.</p>
+        </article>
+        <article class="concept"
+          data-search="retrieval-augmented generation (rag) combining an llm with external information retrieval so responses can use relevant current or domain-specific information rather than relying only on knowledge encoded in model parameters.">
+          <h3>Retrieval-Augmented Generation (RAG)</h3>
+          <p>Combining an LLM with external information retrieval so responses can use relevant current or
+            domain-specific information rather than relying only on knowledge encoded in model parameters.</p>
+        </article>
+        <article class="concept"
+          data-search="agentic systems ai systems that extend generation with capabilities such as reasoning, planning, memory, tool use, feedback, and autonomous action toward a goal.">
+          <h3>Agentic Systems</h3>
+          <p>AI systems that extend generation with capabilities such as reasoning, planning, memory, tool use,
+            feedback, and autonomous action toward a goal.</p>
+        </article>
+        <article class="concept"
+          data-search="business transformation from genai genai can automate or augment content creation, customer support, analysis, knowledge work, and decision support while making sophisticated ai capabilities accessible through natural language.">
+          <h3>Business Transformation from GenAI</h3>
+          <p>GenAI can automate or augment content creation, customer support, analysis, knowledge work, and decision
+            support while making sophisticated AI capabilities accessible through natural language.</p>
+        </article>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-2">
+      <div class="chapter-head">
+        <div class="chapter-number">Class 2</div>
+        <h2>Architecture of Generative AI</h2>
+        <div class="count">21 concepts</div>
+      </div>
+      <div class="concept-grid">
+        <article class="concept"
+          data-search="tokenization breaking text into smaller units called tokens so the model can process it.">
+          <h3>Tokenization</h3>
+          <p>Breaking text into smaller units called tokens so the model can process it.</p>
+        </article>
+        <article class="concept"
+          data-search="embedding converting a token or text item into a dense numerical vector representation that captures aspects of its meaning.">
+          <h3>Embedding</h3>
+          <p>Converting a token or text item into a dense numerical vector representation that captures aspects of its
+            meaning.</p>
+        </article>
+        <article class="concept"
+          data-search="semantic space a vector space in which representations with similar meanings tend to be located closer together; distance therefore reflects semantic similarity.">
+          <h3>Semantic Space</h3>
+          <p>A vector space in which representations with similar meanings tend to be located closer together; distance
+            therefore reflects semantic similarity.</p>
+        </article>
+        <article class="concept"
+          data-search="positional encoding information added to token representations so a transformer can represent the order or position of words in a sequence.">
+          <h3>Positional Encoding</h3>
+          <p>Information added to token representations so a Transformer can represent the order or position of words in
+            a sequence.</p>
+        </article>
+        <article class="concept"
+          data-search="self-attention / attention mechanism a mechanism that lets each token weigh the relevance of other tokens when constructing its representation, enabling the model to capture long-range dependencies.">
+          <h3>Self-Attention / Attention Mechanism</h3>
+          <p>A mechanism that lets each token weigh the relevance of other tokens when constructing its representation,
+            enabling the model to capture long-range dependencies.</p>
+        </article>
+        <article class="concept"
+          data-search="multi-head attention multiple attention operations performed in parallel so the model can capture different types of relationships among tokens.">
+          <h3>Multi-Head Attention</h3>
+          <p>Multiple attention operations performed in parallel so the model can capture different types of
+            relationships among tokens.</p>
+        </article>
+        <article class="concept"
+          data-search="training the phase in which model parameters are adjusted from data so the model learns patterns.">
+          <h3>Training</h3>
+          <p>The phase in which model parameters are adjusted from data so the model learns patterns.</p>
+        </article>
+        <article class="concept"
+          data-search="inference the phase in which an already-trained model applies learned patterns to new input to produce an output.">
+          <h3>Inference</h3>
+          <p>The phase in which an already-trained model applies learned patterns to new input to produce an output.</p>
+        </article>
+        <article class="concept"
+          data-search="diffusion model a generative model that learns to generate images or other data by learning how to reverse a gradual noising process.">
+          <h3>Diffusion Model</h3>
+          <p>A generative model that learns to generate images or other data by learning how to reverse a gradual
+            noising process.</p>
+        </article>
+        <article class="concept"
+          data-search="forward diffusion process the training process that progressively adds noise to data until the original structure is obscured.">
+          <h3>Forward Diffusion Process</h3>
+          <p>The training process that progressively adds noise to data until the original structure is obscured.</p>
+        </article>
+        <article class="concept"
+          data-search="reverse / denoising process the learned process that gradually removes noise to reconstruct or generate a coherent sample.">
+          <h3>Reverse / Denoising Process</h3>
+          <p>The learned process that gradually removes noise to reconstruct or generate a coherent sample.</p>
+        </article>
+        <article class="concept"
+          data-search="conditioning providing additional information, such as a text description, to guide the diffusion generation process toward a desired output.">
+          <h3>Conditioning</h3>
+          <p>Providing additional information, such as a text description, to guide the diffusion generation process
+            toward a desired output.</p>
+        </article>
+        <article class="concept"
+          data-search="multimodal model a model that works across more than one modality, such as text and images, enabling tasks that connect language with visual or other forms of information.">
+          <h3>Multimodal Model</h3>
+          <p>A model that works across more than one modality, such as text and images, enabling tasks that connect
+            language with visual or other forms of information.</p>
+        </article>
+        <article class="concept"
+          data-search="pretrained llm a language model after broad pretraining but before additional alignment for instruction-following and conversational behavior.">
+          <h3>Pretrained LLM</h3>
+          <p>A language model after broad pretraining but before additional alignment for instruction-following and
+            conversational behavior.</p>
+        </article>
+        <article class="concept"
+          data-search="instruction fine-tuning (ift) training a pretrained model on instruction-response examples so it learns to understand and follow user requests and produce appropriate responses.">
+          <h3>Instruction Fine-Tuning (IFT)</h3>
+          <p>Training a pretrained model on instruction-response examples so it learns to understand and follow user
+            requests and produce appropriate responses.</p>
+        </article>
+        <article class="concept"
+          data-search="human preference fine-tuning further aligning model responses with human preferences by learning from human judgments about which responses are better.">
+          <h3>Human Preference Fine-Tuning</h3>
+          <p>Further aligning model responses with human preferences by learning from human judgments about which
+            responses are better.</p>
+        </article>
+        <article class="concept"
+          data-search="rlhf reinforcement learning from human feedback: human preference data is used to train a reward signal and improve the model toward responses humans prefer.">
+          <h3>RLHF</h3>
+          <p>Reinforcement Learning from Human Feedback: human preference data is used to train a reward signal and
+            improve the model toward responses humans prefer.</p>
+        </article>
+        <article class="concept"
+          data-search="dpo direct preference optimization: a preference-learning approach that directly increases preference for chosen responses over rejected responses without the full intermediate reward-model process used in rlhf.">
+          <h3>DPO</h3>
+          <p>Direct Preference Optimization: a preference-learning approach that directly increases preference for
+            chosen responses over rejected responses without the full intermediate reward-model process used in RLHF.
+          </p>
+        </article>
+        <article class="concept"
+          data-search="benchmark a standardized dataset or task set used to evaluate and compare model capabilities.">
+          <h3>Benchmark</h3>
+          <p>A standardized dataset or task set used to evaluate and compare model capabilities.</p>
+        </article>
+        <article class="concept"
+          data-search="enterprise evaluation evaluation tailored to an organization's actual domain, use cases, risks, requirements, and performance criteria; public benchmarks alone may not reflect these production needs.">
+          <h3>Enterprise Evaluation</h3>
+          <p>Evaluation tailored to an organization's actual domain, use cases, risks, requirements, and performance
+            criteria; public benchmarks alone may not reflect these production needs.</p>
+        </article>
+        <article class="concept"
+          data-search="choosing architectures by task transformers are appropriate for language understanding and text analysis; diffusion models are designed for image generation; multimodal models are useful when a task connects text with images or other modalities.">
+          <h3>Choosing Architectures by Task</h3>
+          <p>Transformers are appropriate for language understanding and text analysis; diffusion models are designed
+            for image generation; multimodal models are useful when a task connects text with images or other
+            modalities.</p>
+        </article>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-3">
+      <div class="chapter-head">
+        <div class="chapter-number">Class 3</div>
+        <h2>Prompt Engineering Basics</h2>
+        <div class="count">16 concepts</div>
+      </div>
+      <div class="concept-grid">
+        <article class="concept"
+          data-search="prompt engineering the skill of crafting clear text inputs (prompts) to guide genai models such as llms toward specific outputs. because an llm does not inherently understand a user's intentions, a well-designed prompt helps align the response with the desired outcome.">
+          <h3>Prompt Engineering</h3>
+          <p>The skill of crafting clear text inputs (prompts) to guide GenAI models such as LLMs toward specific
+            outputs. Because an LLM does not inherently understand a user's intentions, a well-designed prompt helps
+            align the response with the desired outcome.</p>
+        </article>
+        <article class="concept"
+          data-search="four core elements of a good prompt the chapter identifies four elements that consistently help improve llm performance: specific instruction, context, input data, and output indicator. these elements are not mandatory in every prompt; they are components that can be combined as needed.">
+          <h3>Four Core Elements of a good Prompt</h3>
+          <p>The chapter identifies four elements that consistently help improve LLM performance: Specific Instruction,
+            Context, Input Data, and Output Indicator. These elements are not mandatory in every prompt; they are
+            components that can be combined as needed.</p>
+        </article>
+        <article class="concept"
+          data-search="specific instruction the command that specifies what the model needs to accomplish. explicit instructions define the task and help the model produce an output aligned with the user's expectations.">
+          <h3>Specific Instruction</h3>
+          <p>The command that specifies what the model needs to accomplish. Explicit instructions define the task and
+            help the model produce an output aligned with the user's expectations.</p>
+        </article>
+        <article class="concept"
+          data-search="input data the specific content that the model will analyze. defining the input precisely helps the model focus on relevant information and avoid unrelated details.">
+          <h3>Input Data</h3>
+          <p>The specific content that the model will analyze. Defining the input precisely helps the model focus on
+            relevant information and avoid unrelated details.</p>
+        </article>
+        <article class="concept"
+          data-search="output indicator the desired format or structure of the response. it tells the model how the answer should be presented, such as a certain number of items, percentages, a category, or an actionable recommendation.">
+          <h3>Output Indicator</h3>
+          <p>The desired format or structure of the response. It tells the model how the answer should be presented,
+            such as a certain number of items, percentages, a category, or an actionable recommendation.</p>
+        </article>
+        <article class="concept"
+          data-search="context background information that situates the task in a particular scenario and identifies relevant aspects for analysis. context helps the model interpret the request appropriately.">
+          <h3>Context</h3>
+          <p>Background information that situates the task in a particular scenario and identifies relevant aspects for
+            analysis. Context helps the model interpret the request appropriately.</p>
+        </article>
+        <article class="concept"
+          data-search="iterative refinement prompt creation is an iterative process. the chapter describes a cycle of initial test, evaluation, refinement, and optimization: test a prompt, evaluate whether the response follows the instructions and context, revise unclear or insufficient parts, and repeat until the output consistently meets the objective.">
+          <h3>Iterative Refinement</h3>
+          <p>Prompt creation is an iterative process. The chapter describes a cycle of initial test, evaluation,
+            refinement, and optimization: test a prompt, evaluate whether the response follows the instructions and
+            context, revise unclear or insufficient parts, and repeat until the output consistently meets the objective.
+          </p>
+        </article>
+        <article class="concept"
+          data-search="zero-shot prompting asking the model to perform a task without providing examples. the model relies on its pretrained knowledge to interpret the request and produce an answer.">
+          <h3>Zero-Shot Prompting</h3>
+          <p>Asking the model to perform a task without providing examples. The model relies on its pretrained knowledge
+            to interpret the request and produce an answer.</p>
+        </article>
+        <article class="concept"
+          data-search="zero-shot limitation without examples, a model may interpret nuanced or context-specific requirements inconsistently, especially when the expected format, label meaning, or decision rule is not obvious.">
+          <h3>Zero-Shot Limitation</h3>
+          <p>Without examples, a model may interpret nuanced or context-specific requirements inconsistently, especially
+            when the expected format, label meaning, or decision rule is not obvious.</p>
+        </article>
+        <article class="concept"
+          data-search="few-shot prompting providing a small number of examples in the prompt to demonstrate the desired pattern, format, interpretation, or reasoning approach before asking the model to handle a new case.">
+          <h3>Few-Shot Prompting</h3>
+          <p>Providing a small number of examples in the prompt to demonstrate the desired pattern, format,
+            interpretation, or reasoning approach before asking the model to handle a new case.</p>
+        </article>
+        <article class="concept"
+          data-search="purpose of examples in few-shot prompting examples help clarify task expectations and show the model the desired output pattern. they can increase the accuracy and consistency of responses when the required format or interpretation might otherwise be ambiguous.">
+          <h3>Purpose of Examples in Few-Shot Prompting</h3>
+          <p>Examples help clarify task expectations and show the model the desired output pattern. They can increase
+            the accuracy and consistency of responses when the required format or interpretation might otherwise be
+            ambiguous.</p>
+        </article>
+
+        <article class="concept"
+          data-search="limits of few-shot prompting few-shot examples provide only limited contextual depth. they may be inadequate for nuanced, dynamic, or complex multi-step situations, and the model may imitate patterns in examples rather than truly learn a new rule.">
+          <h3>Limits of Few-Shot Prompting</h3>
+          <p>Few-shot examples provide only limited contextual depth. They may be inadequate for nuanced, dynamic, or
+            complex multi-step situations, and the model may imitate patterns in examples rather than truly learn a new
+            rule.</p>
+        </article>
+        <article class="concept"
+          data-search="role-playing / persona prompting assigning the model a specific role or persona so that its response reflects a particular perspective, expertise, tone, or communication style. the chapter uses roles such as a customer support agent and a business consultant.">
+          <h3>Role-Playing / Persona Prompting</h3>
+          <p>Assigning the model a specific role or persona so that its response reflects a particular perspective,
+            expertise, tone, or communication style. The chapter uses roles such as a customer support agent and a
+            business consultant.</p>
+        </article>
+        <article class="concept"
+          data-search="advantage of role-playing role-playing helps the model generate responses that are more context-specific and appropriate to the assigned role, including differences in expertise, tone, and communication style.">
+          <h3>Advantage of Role-Playing</h3>
+          <p>Role-playing helps the model generate responses that are more context-specific and appropriate to the
+            assigned role, including differences in expertise, tone, and communication style.</p>
+        </article>
+
+        <article class="concept"
+          data-search="chain-of-thought (cot) prompting a technique designed to guide an llm through a multi-step reasoning process. instead of jumping directly to a conclusion, the model is encouraged to work through intermediate steps.">
+          <h3>Chain-of-Thought (CoT) Prompting</h3>
+          <p>A technique designed to guide an LLM through a multi-step reasoning process. Instead of jumping directly to
+            a conclusion, the model is encouraged to work through intermediate steps.</p>
+        </article>
+        <article class="concept"
+          data-search="few-shot cot provides worked examples that demonstrate the reasoning steps as well as the final answer. the examples show a reasoning structure that can be applied to similar tasks.">
+          <h3>Few-Shot CoT</h3>
+          <p>Provides worked examples that demonstrate the reasoning steps as well as the final answer. The examples
+            show a reasoning structure that can be applied to similar tasks.</p>
+        </article>
 
 
-</div>
-</header>
-<nav class="toolbar">
-<div class="toolbar-inner">
-<a href="#chapter-1">Class 1</a>
-<a href="#chapter-2">Class 2</a>
-<a href="#chapter-3">Class 3</a>
-<a href="#chapter-4">Class 4</a>
-<a href="#chapter-5">Class 5</a>
-<a href="#chapter-6">Class 6</a>
-<input aria-label="Search concepts" id="search" placeholder="Search concepts…" type="search"/>
-</div>
-</nav>
-<main>
-<section class="chapter" id="chapter-1">
-<div class="chapter-head">
-<div class="chapter-number">Class 1</div>
-<h2>Introduction to Generative AI</h2>
-<div class="count">19 concepts</div>
-</div>
-<div class="concept-grid">
-<article class="concept" data-search="generative ai (genai) ai models designed to generate original content such as text, images, audio, video, or code from patterns learned from large-scale training data.">
-<h3>Generative AI (GenAI)</h3>
-<p>AI models designed to generate original content such as text, images, audio, video, or code from patterns learned from large-scale training data.</p>
-</article>
-<article class="concept" data-search="predictive ai ai focused on predicting outcomes, classifying information, detecting anomalies, or forecasting rather than creating new content.">
-<h3>Predictive AI</h3>
-<p>AI focused on predicting outcomes, classifying information, detecting anomalies, or forecasting rather than creating new content.</p>
-</article>
-<article class="concept" data-search="symbolic ai an early ai approach that represents knowledge with symbols and uses explicit, human-written rules and logic to reason.">
-<h3>Symbolic AI</h3>
-<p>An early AI approach that represents knowledge with symbols and uses explicit, human-written rules and logic to reason.</p>
-</article>
-<article class="concept" data-search="limitations of symbolic ai rule-based systems are difficult to scale to complex real-world situations, depend on manually encoded knowledge, and are brittle when they encounter situations not covered by their rules.">
-<h3>Limitations of Symbolic AI</h3>
-<p>Rule-based systems are difficult to scale to complex real-world situations, depend on manually encoded knowledge, and are brittle when they encounter situations not covered by their rules.</p>
-</article>
-<article class="concept" data-search="moravec's paradox the observation that tasks humans regard as intellectually difficult, such as formal reasoning, can be relatively easy for computers, while perception and sensorimotor skills that humans perform effortlessly can be computationally difficult.">
-<h3>Moravec's Paradox</h3>
-<p>The observation that tasks humans regard as intellectually difficult, such as formal reasoning, can be relatively easy for computers, while perception and sensorimotor skills that humans perform effortlessly can be computationally difficult.</p>
-</article>
-<article class="concept" data-search="statistical machine learning an approach in which models learn patterns and relationships from training data rather than relying on explicitly programmed rules.">
-<h3>Statistical Machine Learning</h3>
-<p>An approach in which models learn patterns and relationships from training data rather than relying on explicitly programmed rules.</p>
-</article>
-<article class="concept" data-search="deep learning machine learning based on multilayer neural networks that learn increasingly useful representations from large amounts of data.">
-<h3>Deep Learning</h3>
-<p>Machine learning based on multilayer neural networks that learn increasingly useful representations from large amounts of data.</p>
-</article>
-<article class="concept" data-search="foundation model (fm) a model pretrained on broad data at scale that can be adapted to many downstream tasks rather than being built for only one narrow task.">
-<h3>Foundation Model (FM)</h3>
-<p>A model pretrained on broad data at scale that can be adapted to many downstream tasks rather than being built for only one narrow task.</p>
-</article>
-<article class="concept" data-search="large language model (llm) a large neural language model trained on extensive text data to learn language patterns and generate or process language.">
-<h3>Large Language Model (LLM)</h3>
-<p>A large neural language model trained on extensive text data to learn language patterns and generate or process language.</p>
-</article>
-<article class="concept" data-search="pre-training large-scale initial training through which a model learns broad patterns and knowledge from massive datasets before task-specific adaptation.">
-<h3>Pre-training</h3>
-<p>Large-scale initial training through which a model learns broad patterns and knowledge from massive datasets before task-specific adaptation.</p>
-</article>
-<article class="concept" data-search="why pre-training reduces deployment cost a single pretrained foundation model can be reused and adapted for many tasks, avoiding the need to build and train a separate model from scratch for every application.">
-<h3>Why Pre-training Reduces Deployment Cost</h3>
-<p>A single pretrained foundation model can be reused and adapted for many tasks, avoiding the need to build and train a separate model from scratch for every application.</p>
-</article>
-<article class="concept" data-search="transformer a neural architecture based on attention that can efficiently model relationships among tokens, including long-range dependencies.">
-<h3>Transformer</h3>
-<p>A neural architecture based on attention that can efficiently model relationships among tokens, including long-range dependencies.</p>
-</article>
-<article class="concept" data-search="generative ai as a new era modern genai moves beyond prediction and classification to creating new content and supporting natural-language interaction, allowing general-purpose pretrained models to be adapted across many tasks.">
-<h3>Generative AI as a New Era</h3>
-<p>Modern GenAI moves beyond prediction and classification to creating new content and supporting natural-language interaction, allowing general-purpose pretrained models to be adapted across many tasks.</p>
-</article>
-<article class="concept" data-search="natural-language interface users can interact with genai in everyday language instead of needing specialized programming or technical interfaces, lowering barriers to ai use.">
-<h3>Natural-Language Interface</h3>
-<p>Users can interact with GenAI in everyday language instead of needing specialized programming or technical interfaces, lowering barriers to AI use.</p>
-</article>
-<article class="concept" data-search="prompt engineering designing and refining the instructions supplied to a pretrained model to guide its output without changing the model's underlying parameters.">
-<h3>Prompt Engineering</h3>
-<p>Designing and refining the instructions supplied to a pretrained model to guide its output without changing the model's underlying parameters.</p>
-</article>
-<article class="concept" data-search="fine-tuning further training a pretrained model on domain- or task-specific data to adapt its behavior and improve performance for a particular use case.">
-<h3>Fine-Tuning</h3>
-<p>Further training a pretrained model on domain- or task-specific data to adapt its behavior and improve performance for a particular use case.</p>
-</article>
-<article class="concept" data-search="retrieval-augmented generation (rag) combining an llm with external information retrieval so responses can use relevant current or domain-specific information rather than relying only on knowledge encoded in model parameters.">
-<h3>Retrieval-Augmented Generation (RAG)</h3>
-<p>Combining an LLM with external information retrieval so responses can use relevant current or domain-specific information rather than relying only on knowledge encoded in model parameters.</p>
-</article>
-<article class="concept" data-search="agentic systems ai systems that extend generation with capabilities such as reasoning, planning, memory, tool use, feedback, and autonomous action toward a goal.">
-<h3>Agentic Systems</h3>
-<p>AI systems that extend generation with capabilities such as reasoning, planning, memory, tool use, feedback, and autonomous action toward a goal.</p>
-</article>
-<article class="concept" data-search="business transformation from genai genai can automate or augment content creation, customer support, analysis, knowledge work, and decision support while making sophisticated ai capabilities accessible through natural language.">
-<h3>Business Transformation from GenAI</h3>
-<p>GenAI can automate or augment content creation, customer support, analysis, knowledge work, and decision support while making sophisticated AI capabilities accessible through natural language.</p>
-</article>
-</div>
-</section>
-<section class="chapter" id="chapter-2">
-<div class="chapter-head">
-<div class="chapter-number">Class 2</div>
-<h2>Architecture of Generative AI</h2>
-<div class="count">21 concepts</div>
-</div>
-<div class="concept-grid">
-<article class="concept" data-search="tokenization breaking text into smaller units called tokens so the model can process it.">
-<h3>Tokenization</h3>
-<p>Breaking text into smaller units called tokens so the model can process it.</p>
-</article>
-<article class="concept" data-search="embedding converting a token or text item into a dense numerical vector representation that captures aspects of its meaning.">
-<h3>Embedding</h3>
-<p>Converting a token or text item into a dense numerical vector representation that captures aspects of its meaning.</p>
-</article>
-<article class="concept" data-search="semantic space a vector space in which representations with similar meanings tend to be located closer together; distance therefore reflects semantic similarity.">
-<h3>Semantic Space</h3>
-<p>A vector space in which representations with similar meanings tend to be located closer together; distance therefore reflects semantic similarity.</p>
-</article>
-<article class="concept" data-search="positional encoding information added to token representations so a transformer can represent the order or position of words in a sequence.">
-<h3>Positional Encoding</h3>
-<p>Information added to token representations so a Transformer can represent the order or position of words in a sequence.</p>
-</article>
-<article class="concept" data-search="self-attention / attention mechanism a mechanism that lets each token weigh the relevance of other tokens when constructing its representation, enabling the model to capture long-range dependencies.">
-<h3>Self-Attention / Attention Mechanism</h3>
-<p>A mechanism that lets each token weigh the relevance of other tokens when constructing its representation, enabling the model to capture long-range dependencies.</p>
-</article>
-<article class="concept" data-search="multi-head attention multiple attention operations performed in parallel so the model can capture different types of relationships among tokens.">
-<h3>Multi-Head Attention</h3>
-<p>Multiple attention operations performed in parallel so the model can capture different types of relationships among tokens.</p>
-</article>
-<article class="concept" data-search="training the phase in which model parameters are adjusted from data so the model learns patterns.">
-<h3>Training</h3>
-<p>The phase in which model parameters are adjusted from data so the model learns patterns.</p>
-</article>
-<article class="concept" data-search="inference the phase in which an already-trained model applies learned patterns to new input to produce an output.">
-<h3>Inference</h3>
-<p>The phase in which an already-trained model applies learned patterns to new input to produce an output.</p>
-</article>
-<article class="concept" data-search="diffusion model a generative model that learns to generate images or other data by learning how to reverse a gradual noising process.">
-<h3>Diffusion Model</h3>
-<p>A generative model that learns to generate images or other data by learning how to reverse a gradual noising process.</p>
-</article>
-<article class="concept" data-search="forward diffusion process the training process that progressively adds noise to data until the original structure is obscured.">
-<h3>Forward Diffusion Process</h3>
-<p>The training process that progressively adds noise to data until the original structure is obscured.</p>
-</article>
-<article class="concept" data-search="reverse / denoising process the learned process that gradually removes noise to reconstruct or generate a coherent sample.">
-<h3>Reverse / Denoising Process</h3>
-<p>The learned process that gradually removes noise to reconstruct or generate a coherent sample.</p>
-</article>
-<article class="concept" data-search="conditioning providing additional information, such as a text description, to guide the diffusion generation process toward a desired output.">
-<h3>Conditioning</h3>
-<p>Providing additional information, such as a text description, to guide the diffusion generation process toward a desired output.</p>
-</article>
-<article class="concept" data-search="multimodal model a model that works across more than one modality, such as text and images, enabling tasks that connect language with visual or other forms of information.">
-<h3>Multimodal Model</h3>
-<p>A model that works across more than one modality, such as text and images, enabling tasks that connect language with visual or other forms of information.</p>
-</article>
-<article class="concept" data-search="pretrained llm a language model after broad pretraining but before additional alignment for instruction-following and conversational behavior.">
-<h3>Pretrained LLM</h3>
-<p>A language model after broad pretraining but before additional alignment for instruction-following and conversational behavior.</p>
-</article>
-<article class="concept" data-search="instruction fine-tuning (ift) training a pretrained model on instruction-response examples so it learns to understand and follow user requests and produce appropriate responses.">
-<h3>Instruction Fine-Tuning (IFT)</h3>
-<p>Training a pretrained model on instruction-response examples so it learns to understand and follow user requests and produce appropriate responses.</p>
-</article>
-<article class="concept" data-search="human preference fine-tuning further aligning model responses with human preferences by learning from human judgments about which responses are better.">
-<h3>Human Preference Fine-Tuning</h3>
-<p>Further aligning model responses with human preferences by learning from human judgments about which responses are better.</p>
-</article>
-<article class="concept" data-search="rlhf reinforcement learning from human feedback: human preference data is used to train a reward signal and improve the model toward responses humans prefer.">
-<h3>RLHF</h3>
-<p>Reinforcement Learning from Human Feedback: human preference data is used to train a reward signal and improve the model toward responses humans prefer.</p>
-</article>
-<article class="concept" data-search="dpo direct preference optimization: a preference-learning approach that directly increases preference for chosen responses over rejected responses without the full intermediate reward-model process used in rlhf.">
-<h3>DPO</h3>
-<p>Direct Preference Optimization: a preference-learning approach that directly increases preference for chosen responses over rejected responses without the full intermediate reward-model process used in RLHF.</p>
-</article>
-<article class="concept" data-search="benchmark a standardized dataset or task set used to evaluate and compare model capabilities.">
-<h3>Benchmark</h3>
-<p>A standardized dataset or task set used to evaluate and compare model capabilities.</p>
-</article>
-<article class="concept" data-search="enterprise evaluation evaluation tailored to an organization's actual domain, use cases, risks, requirements, and performance criteria; public benchmarks alone may not reflect these production needs.">
-<h3>Enterprise Evaluation</h3>
-<p>Evaluation tailored to an organization's actual domain, use cases, risks, requirements, and performance criteria; public benchmarks alone may not reflect these production needs.</p>
-</article>
-<article class="concept" data-search="choosing architectures by task transformers are appropriate for language understanding and text analysis; diffusion models are designed for image generation; multimodal models are useful when a task connects text with images or other modalities.">
-<h3>Choosing Architectures by Task</h3>
-<p>Transformers are appropriate for language understanding and text analysis; diffusion models are designed for image generation; multimodal models are useful when a task connects text with images or other modalities.</p>
-</article>
-</div>
-</section>
-<section class="chapter" id="chapter-3">
-<div class="chapter-head">
-<div class="chapter-number">Class 3</div>
-<h2>Prompt Engineering Basics</h2>
-<div class="count">16 concepts</div>
-</div>
-<div class="concept-grid">
-<article class="concept" data-search="prompt engineering the skill of crafting clear text inputs (prompts) to guide genai models such as llms toward specific outputs. because an llm does not inherently understand a user's intentions, a well-designed prompt helps align the response with the desired outcome.">
-<h3>Prompt Engineering</h3>
-<p>The skill of crafting clear text inputs (prompts) to guide GenAI models such as LLMs toward specific outputs. Because an LLM does not inherently understand a user's intentions, a well-designed prompt helps align the response with the desired outcome.</p>
-</article>
-<article class="concept" data-search="four core elements of a zero-shot prompt the chapter identifies four elements that consistently help improve llm performance: specific instruction, context, input data, and output indicator. these elements are not mandatory in every prompt; they are components that can be combined as needed.">
-<h3>Four Core Elements of a Zero-Shot Prompt</h3>
-<p>The chapter identifies four elements that consistently help improve LLM performance: Specific Instruction, Context, Input Data, and Output Indicator. These elements are not mandatory in every prompt; they are components that can be combined as needed.</p>
-</article>
-<article class="concept" data-search="specific instruction the command that specifies what the model needs to accomplish. explicit instructions define the task and help the model produce an output aligned with the user's expectations.">
-<h3>Specific Instruction</h3>
-<p>The command that specifies what the model needs to accomplish. Explicit instructions define the task and help the model produce an output aligned with the user's expectations.</p>
-</article>
-<article class="concept" data-search="input data the specific content that the model will analyze. defining the input precisely helps the model focus on relevant information and avoid unrelated details.">
-<h3>Input Data</h3>
-<p>The specific content that the model will analyze. Defining the input precisely helps the model focus on relevant information and avoid unrelated details.</p>
-</article>
-<article class="concept" data-search="output indicator the desired format or structure of the response. it tells the model how the answer should be presented, such as a certain number of items, percentages, a category, or an actionable recommendation.">
-<h3>Output Indicator</h3>
-<p>The desired format or structure of the response. It tells the model how the answer should be presented, such as a certain number of items, percentages, a category, or an actionable recommendation.</p>
-</article>
-<article class="concept" data-search="context background information that situates the task in a particular scenario and identifies relevant aspects for analysis. context helps the model interpret the request appropriately.">
-<h3>Context</h3>
-<p>Background information that situates the task in a particular scenario and identifies relevant aspects for analysis. Context helps the model interpret the request appropriately.</p>
-</article>
-<article class="concept" data-search="iterative refinement prompt creation is an iterative process. the chapter describes a cycle of initial test, evaluation, refinement, and optimization: test a prompt, evaluate whether the response follows the instructions and context, revise unclear or insufficient parts, and repeat until the output consistently meets the objective.">
-<h3>Iterative Refinement</h3>
-<p>Prompt creation is an iterative process. The chapter describes a cycle of initial test, evaluation, refinement, and optimization: test a prompt, evaluate whether the response follows the instructions and context, revise unclear or insufficient parts, and repeat until the output consistently meets the objective.</p>
-</article>
-<article class="concept" data-search="zero-shot prompting asking the model to perform a task without providing examples. the model relies on its pretrained knowledge to interpret the request and produce an answer.">
-<h3>Zero-Shot Prompting</h3>
-<p>Asking the model to perform a task without providing examples. The model relies on its pretrained knowledge to interpret the request and produce an answer.</p>
-</article>
-<article class="concept" data-search="zero-shot limitation without examples, a model may interpret nuanced or context-specific requirements inconsistently, especially when the expected format, label meaning, or decision rule is not obvious.">
-<h3>Zero-Shot Limitation</h3>
-<p>Without examples, a model may interpret nuanced or context-specific requirements inconsistently, especially when the expected format, label meaning, or decision rule is not obvious.</p>
-</article>
-<article class="concept" data-search="few-shot prompting providing a small number of examples in the prompt to demonstrate the desired pattern, format, interpretation, or reasoning approach before asking the model to handle a new case.">
-<h3>Few-Shot Prompting</h3>
-<p>Providing a small number of examples in the prompt to demonstrate the desired pattern, format, interpretation, or reasoning approach before asking the model to handle a new case.</p>
-</article>
-<article class="concept" data-search="purpose of examples in few-shot prompting examples help clarify task expectations and show the model the desired output pattern. they can increase the accuracy and consistency of responses when the required format or interpretation might otherwise be ambiguous.">
-<h3>Purpose of Examples in Few-Shot Prompting</h3>
-<p>Examples help clarify task expectations and show the model the desired output pattern. They can increase the accuracy and consistency of responses when the required format or interpretation might otherwise be ambiguous.</p>
-</article>
-<article class="concept" data-search="limits of few-shot prompting few-shot examples provide only limited contextual depth. they may be inadequate for nuanced, dynamic, or complex multi-step situations, and the model may imitate patterns in examples rather than truly learn a new rule.">
-<h3>Limits of Few-Shot Prompting</h3>
-<p>Few-shot examples provide only limited contextual depth. They may be inadequate for nuanced, dynamic, or complex multi-step situations, and the model may imitate patterns in examples rather than truly learn a new rule.</p>
-</article>
-<article class="concept" data-search="role-playing / persona prompting assigning the model a specific role or persona so that its response reflects a particular perspective, expertise, tone, or communication style. the chapter uses roles such as a customer support agent and a business consultant.">
-<h3>Role-Playing / Persona Prompting</h3>
-<p>Assigning the model a specific role or persona so that its response reflects a particular perspective, expertise, tone, or communication style. The chapter uses roles such as a customer support agent and a business consultant.</p>
-</article>
-<article class="concept" data-search="advantage of role-playing role-playing helps the model generate responses that are more context-specific and appropriate to the assigned role, including differences in expertise, tone, and communication style.">
-<h3>Advantage of Role-Playing</h3>
-<p>Role-playing helps the model generate responses that are more context-specific and appropriate to the assigned role, including differences in expertise, tone, and communication style.</p>
-</article>
-<article class="concept" data-search="chain-of-thought (cot) prompting a technique designed to guide an llm through a multi-step reasoning process. instead of jumping directly to a conclusion, the model is encouraged to work through intermediate steps.">
-<h3>Chain-of-Thought (CoT) Prompting</h3>
-<p>A technique designed to guide an LLM through a multi-step reasoning process. Instead of jumping directly to a conclusion, the model is encouraged to work through intermediate steps.</p>
-</article>
-<article class="concept" data-search="few-shot cot provides worked examples that demonstrate the reasoning steps as well as the final answer. the examples show a reasoning structure that can be applied to similar tasks.">
-<h3>Few-Shot CoT</h3>
-<p>Provides worked examples that demonstrate the reasoning steps as well as the final answer. The examples show a reasoning structure that can be applied to similar tasks.</p>
-</article>
-</div>
-</section>
-<section class="chapter" id="chapter-4">
-<div class="chapter-head">
-<div class="chapter-number">Class 4</div>
-<h2>Advanced Prompt Engineering &amp; Reasoning</h2>
-<div class="count">21 concepts</div>
-</div>
-<div class="concept-grid">
-<article class="concept" data-search="system prompt a broad directive that establishes the model's overall behavior and role. it can define tone, constraints, objectives, and interaction rules that should remain consistent across interactions.">
-<h3>System Prompt</h3>
-<p>A broad directive that establishes the model's overall behavior and role. It can define tone, constraints, objectives, and interaction rules that should remain consistent across interactions.</p>
-</article>
-<article class="concept" data-search="user prompt a task-specific instruction supplied during an individual interaction. it communicates the immediate request the model should complete.">
-<h3>User Prompt</h3>
-<p>A task-specific instruction supplied during an individual interaction. It communicates the immediate request the model should complete.</p>
-</article>
-<article class="concept" data-search="system prompt vs. user prompt the system prompt establishes general behavior and persistent guidance, while the user prompt supplies the task-specific instruction. they work together: the system prompt creates consistency and the user prompt adapts the interaction to a particular need.">
-<h3>System Prompt vs. User Prompt</h3>
-<p>The system prompt establishes general behavior and persistent guidance, while the user prompt supplies the task-specific instruction. They work together: the system prompt creates consistency and the user prompt adapts the interaction to a particular need.</p>
-</article>
-<article class="concept" data-search="llm parameter control inference-time model parameters can be adjusted to influence output style, creativity, diversity, structure, and length without changing the model's underlying knowledge.">
-<h3>LLM Parameter Control</h3>
-<p>Inference-time model parameters can be adjusted to influence output style, creativity, diversity, structure, and length without changing the model's underlying knowledge.</p>
-</article>
-<article class="concept" data-search="temperature controls randomness in token selection. lower temperature emphasizes higher-probability tokens and produces more stable, deterministic, and focused output. higher temperature increases variability and creativity.">
-<h3>Temperature</h3>
-<p>Controls randomness in token selection. Lower temperature emphasizes higher-probability tokens and produces more stable, deterministic, and focused output. Higher temperature increases variability and creativity.</p>
-</article>
-<article class="concept" data-search="top-p a cumulative-probability threshold that limits token selection to a set of the most probable candidate tokens. it provides another way to balance focused output with diversity.">
-<h3>Top-P</h3>
-<p>A cumulative-probability threshold that limits token selection to a set of the most probable candidate tokens. It provides another way to balance focused output with diversity.</p>
-</article>
-<article class="concept" data-search="max length defines the maximum number of tokens the model can generate and therefore places a boundary on response length.">
-<h3>Max Length</h3>
-<p>Defines the maximum number of tokens the model can generate and therefore places a boundary on response length.</p>
-</article>
-<article class="concept" data-search="frequency penalty discourages repeated words or tokens by increasing the penalty as they appear repeatedly. it is used to reduce repetitive phrasing.">
-<h3>Frequency Penalty</h3>
-<p>Discourages repeated words or tokens by increasing the penalty as they appear repeatedly. It is used to reduce repetitive phrasing.</p>
-</article>
-<article class="concept" data-search="presence penalty discourages reuse of information or ideas that have already appeared, encouraging the model to introduce new concepts and increase variety.">
-<h3>Presence Penalty</h3>
-<p>Discourages reuse of information or ideas that have already appeared, encouraging the model to introduce new concepts and increase variety.</p>
-</article>
-<article class="concept" data-search="tree-of-thoughts (tot) a prompting technique that guides a model to systematically explore multiple possible reasoning paths. the model can compare alternatives and, when needed, backtrack rather than follow only one linear chain.">
-<h3>Tree-of-Thoughts (ToT)</h3>
-<p>A prompting technique that guides a model to systematically explore multiple possible reasoning paths. The model can compare alternatives and, when needed, backtrack rather than follow only one linear chain.</p>
-</article>
-<article class="concept" data-search="self-consistency generating multiple responses or reasoning paths to the same question and comparing them for consistency. agreement across independent responses can increase confidence in the result.">
-<h3>Self-Consistency</h3>
-<p>Generating multiple responses or reasoning paths to the same question and comparing them for consistency. Agreement across independent responses can increase confidence in the result.</p>
-</article>
-<article class="concept" data-search="self-refinement the model first produces an answer, then evaluates or critiques that answer, identifies weaknesses, and revises it to improve the final response.">
-<h3>Self-Refinement</h3>
-<p>The model first produces an answer, then evaluates or critiques that answer, identifies weaknesses, and revises it to improve the final response.</p>
-</article>
-<article class="concept" data-search="self-explanation / maieutic prompting prompting the model to explain its reasoning process. the explanation can make the reasoning more transparent and help expose inconsistencies or errors.">
-<h3>Self-Explanation / Maieutic Prompting</h3>
-<p>Prompting the model to explain its reasoning process. The explanation can make the reasoning more transparent and help expose inconsistencies or errors.</p>
-</article>
-<article class="concept" data-search="emotional amplification adding emotionally meaningful context to a prompt to improve the model's responsiveness to emotional or sensitive situations. the chapter discusses its usefulness in settings such as customer support, mental health, and social interaction.">
-<h3>Emotional Amplification</h3>
-<p>Adding emotionally meaningful context to a prompt to improve the model's responsiveness to emotional or sensitive situations. The chapter discusses its usefulness in settings such as customer support, mental health, and social interaction.</p>
-</article>
-<article class="concept" data-search="reasoning model a model designed to handle complex multi-step tasks by breaking a problem into smaller steps, evaluating intermediate reasoning, and constructing a structured solution.">
-<h3>Reasoning Model</h3>
-<p>A model designed to handle complex multi-step tasks by breaking a problem into smaller steps, evaluating intermediate reasoning, and constructing a structured solution.</p>
-</article>
-<article class="concept" data-search="conventional llm vs. reasoning model the chapter contrasts conventional llms, which tend to produce direct responses based on learned language patterns, with reasoning models that explicitly decompose problems, work through intermediate steps, and provide more structured justification.">
-<h3>Conventional LLM vs. Reasoning Model</h3>
-<p>The chapter contrasts conventional LLMs, which tend to produce direct responses based on learned language patterns, with reasoning models that explicitly decompose problems, work through intermediate steps, and provide more structured justification.</p>
-</article>
-<article class="concept" data-search="step-by-step reasoning breaking a complex task into smaller logical steps makes the reasoning process more visible and checkable. this is the central advantage highlighted for reasoning-oriented approaches.">
-<h3>Step-by-Step Reasoning</h3>
-<p>Breaking a complex task into smaller logical steps makes the reasoning process more visible and checkable. This is the central advantage highlighted for reasoning-oriented approaches.</p>
-</article>
-<article class="concept" data-search="chain-of-thought for complex tasks cot is the chapter's technique for prompting explicit multi-step reasoning. it is appropriate when a task benefits from showing or following a sequence of reasoning steps, such as calculations or logical analysis.">
-<h3>Chain-of-Thought for Complex Tasks</h3>
-<p>CoT is the chapter's technique for prompting explicit multi-step reasoning. It is appropriate when a task benefits from showing or following a sequence of reasoning steps, such as calculations or logical analysis.</p>
-</article>
-<article class="concept" data-search="cot vs. tree-of-thoughts cot follows a step-by-step reasoning chain. tot expands the process by exploring multiple possible reasoning paths, comparing them, and potentially backtracking.">
-<h3>CoT vs. Tree-of-Thoughts</h3>
-<p>CoT follows a step-by-step reasoning chain. ToT expands the process by exploring multiple possible reasoning paths, comparing them, and potentially backtracking.</p>
-</article>
-<article class="concept" data-search="cot vs. self-consistency cot structures a reasoning path. self-consistency generates multiple answers or reasoning paths and compares them to identify a consistent result.">
-<h3>CoT vs. Self-Consistency</h3>
-<p>CoT structures a reasoning path. Self-consistency generates multiple answers or reasoning paths and compares them to identify a consistent result.</p>
-</article>
-<article class="concept" data-search="risks / costs of reasoning-heavy prompting the chapter cautions that more elaborate reasoning is not always necessary. reasoning-heavy prompting can require more computational resources and can produce unnecessary detail or complexity for simple tasks. longer reasoning processes also create more intermediate steps in which mistakes may occur.">
-<h3>Risks / Costs of Reasoning-Heavy Prompting</h3>
-<p>The chapter cautions that more elaborate reasoning is not always necessary. Reasoning-heavy prompting can require more computational resources and can produce unnecessary detail or complexity for simple tasks. Longer reasoning processes also create more intermediate steps in which mistakes may occur.</p>
-</article>
-</div>
-</section>
-<section class="chapter" id="chapter-5">
-<div class="chapter-head">
-<div class="chapter-number">Class 5</div>
-<h2>Retrieval-Augmented Generation</h2>
-<div class="count">22 concepts</div>
-</div>
-<div class="concept-grid">
-<article class="concept" data-search="retrieval-augmented generation (rag) a system that combines retrieval of external information with an llm so generation can be grounded in relevant retrieved context.">
-<h3>Retrieval-Augmented Generation (RAG)</h3>
-<p>A system that combines retrieval of external information with an LLM so generation can be grounded in relevant retrieved context.</p>
-</article>
-<article class="concept" data-search="why rag rag addresses limitations of closed-book pretrained models by providing access to current, domain-specific, or proprietary information at query time and by grounding responses in retrieved sources.">
-<h3>Why RAG</h3>
-<p>RAG addresses limitations of closed-book pretrained models by providing access to current, domain-specific, or proprietary information at query time and by grounding responses in retrieved sources.</p>
-</article>
-<article class="concept" data-search="closed-book llm an llm that answers primarily from knowledge encoded in its parameters, without retrieving external information at query time.">
-<h3>Closed-Book LLM</h3>
-<p>An LLM that answers primarily from knowledge encoded in its parameters, without retrieving external information at query time.</p>
-</article>
-<article class="concept" data-search="open-book analogy rag is analogous to an open-book exam because the model can retrieve relevant external material before producing its answer.">
-<h3>Open-Book Analogy</h3>
-<p>RAG is analogous to an open-book exam because the model can retrieve relevant external material before producing its answer.</p>
-</article>
-<article class="concept" data-search="knowledge base the external collection of documents or information that a rag system searches.">
-<h3>Knowledge Base</h3>
-<p>The external collection of documents or information that a RAG system searches.</p>
-</article>
-<article class="concept" data-search="rag pipeline user query -&gt; retrieval/search -&gt; relevant documents -&gt; retrieved context combined with the query -&gt; llm -&gt; response.">
-<h3>RAG Pipeline</h3>
-<p>User query -&gt; retrieval/search -&gt; relevant documents -&gt; retrieved context combined with the query -&gt; LLM -&gt; response.</p>
-</article>
-<article class="concept" data-search="knowledge-base preparation documents are split into chunks, transformed into embeddings, and stored/indexed in a vector database for later retrieval.">
-<h3>Knowledge-Base Preparation</h3>
-<p>Documents are split into chunks, transformed into embeddings, and stored/indexed in a vector database for later retrieval.</p>
-</article>
-<article class="concept" data-search="chunking dividing documents into smaller pieces that can be embedded, stored, and retrieved independently.">
-<h3>Chunking</h3>
-<p>Dividing documents into smaller pieces that can be embedded, stored, and retrieved independently.</p>
-</article>
-<article class="concept" data-search="embedding a dense, high-dimensional numerical vector representing semantic information in a word, sentence, paragraph, or document.">
-<h3>Embedding</h3>
-<p>A dense, high-dimensional numerical vector representing semantic information in a word, sentence, paragraph, or document.</p>
-</article>
-<article class="concept" data-search="semantic similarity similarity in meaning represented by proximity of vectors in embedding space; closer embeddings indicate more semantically related content.">
-<h3>Semantic Similarity</h3>
-<p>Similarity in meaning represented by proximity of vectors in embedding space; closer embeddings indicate more semantically related content.</p>
-</article>
-<article class="concept" data-search="vector database a database optimized to store, index, and retrieve embedding vectors efficiently.">
-<h3>Vector Database</h3>
-<p>A database optimized to store, index, and retrieve embedding vectors efficiently.</p>
-</article>
-<article class="concept" data-search="similarity search searching for stored vectors closest to a query vector in semantic space in order to retrieve meaningfully related content.">
-<h3>Similarity Search</h3>
-<p>Searching for stored vectors closest to a query vector in semantic space in order to retrieve meaningfully related content.</p>
-</article>
-<article class="concept" data-search="retrieval the stage that identifies information in the knowledge base relevant to the user's query.">
-<h3>Retrieval</h3>
-<p>The stage that identifies information in the knowledge base relevant to the user's query.</p>
-</article>
-<article class="concept" data-search="augmentation adding retrieved information to the context or prompt supplied to the llm.">
-<h3>Augmentation</h3>
-<p>Adding retrieved information to the context or prompt supplied to the LLM.</p>
-</article>
-<article class="concept" data-search="generation using the original query together with retrieved context to produce the final response.">
-<h3>Generation</h3>
-<p>Using the original query together with retrieved context to produce the final response.</p>
-</article>
-<article class="concept" data-search="keyword search retrieval based mainly on lexical or exact term matching.">
-<h3>Keyword Search</h3>
-<p>Retrieval based mainly on lexical or exact term matching.</p>
-</article>
-<article class="concept" data-search="semantic / vector search retrieval based on embedding similarity, allowing semantically related content to be found even without identical keywords.">
-<h3>Semantic / Vector Search</h3>
-<p>Retrieval based on embedding similarity, allowing semantically related content to be found even without identical keywords.</p>
-</article>
-<article class="concept" data-search="hybrid search combining keyword-based and semantic/vector-based retrieval to benefit from both exact matching and semantic similarity.">
-<h3>Hybrid Search</h3>
-<p>Combining keyword-based and semantic/vector-based retrieval to benefit from both exact matching and semantic similarity.</p>
-</article>
-<article class="concept" data-search="reranking reordering initially retrieved documents with an additional relevance method so the most useful results are prioritized.">
-<h3>Reranking</h3>
-<p>Reordering initially retrieved documents with an additional relevance method so the most useful results are prioritized.</p>
-</article>
-<article class="concept" data-search="examples of vector databases the chapter's comparison includes systems such as faiss, weaviate, milvus, pinecone, and qdrant.">
-<h3>Examples of Vector Databases</h3>
-<p>The chapter's comparison includes systems such as FAISS, Weaviate, Milvus, Pinecone, and Qdrant.</p>
-</article>
-<article class="concept" data-search="rag for domain-specific knowledge organizations can update an external knowledge base with specialized or changing information and retrieve it at query time without retraining the llm each time the knowledge changes.">
-<h3>RAG for Domain-Specific Knowledge</h3>
-<p>Organizations can update an external knowledge base with specialized or changing information and retrieve it at query time without retraining the LLM each time the knowledge changes.</p>
-</article>
-<article class="concept" data-search="rag limitation rag performance depends on the quality, freshness, chunking, indexing, and retrieval of the knowledge base; poor retrieval can still lead to incomplete or inaccurate answers.">
-<h3>RAG Limitation</h3>
-<p>RAG performance depends on the quality, freshness, chunking, indexing, and retrieval of the knowledge base; poor retrieval can still lead to incomplete or inaccurate answers.</p>
-</article>
-</div>
-</section>
-<section class="chapter" id="chapter-6">
-<div class="chapter-head">
-<div class="chapter-number">Class 6</div>
-<h2>RAG Techniques &amp; Evaluation</h2>
-<div class="count">33 concepts</div>
-</div>
-<div class="concept-grid">
-<article class="concept" data-search="three rag stages rag challenges and improvements can be organized into pre-retrieval, retrieval, and post-retrieval stages.">
-<h3>Three RAG Stages</h3>
-<p>RAG challenges and improvements can be organized into pre-retrieval, retrieval, and post-retrieval stages.</p>
-</article>
-<article class="concept" data-search="pre-retrieval preparation of data, document organization, chunking, metadata, and queries before the system performs retrieval.">
-<h3>Pre-Retrieval</h3>
-<p>Preparation of data, document organization, chunking, metadata, and queries before the system performs retrieval.</p>
-</article>
-<article class="concept" data-search="retrieval the stage in which the system searches for and retrieves information relevant to the user's query.">
-<h3>Retrieval</h3>
-<p>The stage in which the system searches for and retrieves information relevant to the user's query.</p>
-</article>
-<article class="concept" data-search="post-retrieval the stage in which retrieved information is prioritized, filtered, compressed, validated, and prepared for generation.">
-<h3>Post-Retrieval</h3>
-<p>The stage in which retrieved information is prioritized, filtered, compressed, validated, and prepared for generation.</p>
-</article>
-<article class="concept" data-search="data quality management maintaining accurate, relevant, fresh, well-organized knowledge-base content so retrieval is based on reliable information.">
-<h3>Data Quality Management</h3>
-<p>Maintaining accurate, relevant, fresh, well-organized knowledge-base content so retrieval is based on reliable information.</p>
-</article>
-<article class="concept" data-search="metadata enrichment adding contextual attributes such as date, source, category, author, or document type to support filtering and more precise retrieval.">
-<h3>Metadata Enrichment</h3>
-<p>Adding contextual attributes such as date, source, category, author, or document type to support filtering and more precise retrieval.</p>
-</article>
-<article class="concept" data-search="fixed-size chunking splitting a document into chunks of a predetermined length.">
-<h3>Fixed-Size Chunking</h3>
-<p>Splitting a document into chunks of a predetermined length.</p>
-</article>
-<article class="concept" data-search="overlapping chunking creating chunks that share some text at their boundaries to reduce loss of context across chunk breaks.">
-<h3>Overlapping Chunking</h3>
-<p>Creating chunks that share some text at their boundaries to reduce loss of context across chunk breaks.</p>
-</article>
-<article class="concept" data-search="semantic-aware chunking choosing chunk boundaries based on semantic or document structure rather than only a fixed token count.">
-<h3>Semantic-Aware Chunking</h3>
-<p>Choosing chunk boundaries based on semantic or document structure rather than only a fixed token count.</p>
-</article>
-<article class="concept" data-search="hierarchical chunking maintaining relationships between small chunks and larger parent sections/documents so retrieval can combine precise matches with broader context.">
-<h3>Hierarchical Chunking</h3>
-<p>Maintaining relationships between small chunks and larger parent sections/documents so retrieval can combine precise matches with broader context.</p>
-</article>
-<article class="concept" data-search="chunk size trade-off chunks that are too large can dilute relevant information and reduce retrieval precision; chunks that are too small can fragment context and omit information needed to answer a question.">
-<h3>Chunk Size Trade-Off</h3>
-<p>Chunks that are too large can dilute relevant information and reduce retrieval precision; chunks that are too small can fragment context and omit information needed to answer a question.</p>
-</article>
-<article class="concept" data-search="query rewriting reformulating a user's query into a form that is more effective for retrieval.">
-<h3>Query Rewriting</h3>
-<p>Reformulating a user's query into a form that is more effective for retrieval.</p>
-</article>
-<article class="concept" data-search="hyde hypothetical document embeddings: the model generates a hypothetical document or answer for the query; that generated text is embedded and used to retrieve similar real documents.">
-<h3>HyDE</h3>
-<p>Hypothetical Document Embeddings: the model generates a hypothetical document or answer for the query; that generated text is embedded and used to retrieve similar real documents.</p>
-</article>
-<article class="concept" data-search="rag fusion generating multiple related query variations, retrieving results for each, and combining/reranking the retrieval results to improve coverage and relevance.">
-<h3>RAG Fusion</h3>
-<p>Generating multiple related query variations, retrieving results for each, and combining/reranking the retrieval results to improve coverage and relevance.</p>
-</article>
-<article class="concept" data-search="hybrid search combining keyword retrieval with semantic/vector retrieval; this can recover both exact terminology and conceptually related documents, making retrieval more robust than relying on only one method.">
-<h3>Hybrid Search</h3>
-<p>Combining keyword retrieval with semantic/vector retrieval; this can recover both exact terminology and conceptually related documents, making retrieval more robust than relying on only one method.</p>
-</article>
-<article class="concept" data-search="approximate nearest neighbor (ann) search efficiently finding vectors that are approximately closest to the query vector without exhaustively comparing every vector in a large database.">
-<h3>Approximate Nearest Neighbor (ANN) Search</h3>
-<p>Efficiently finding vectors that are approximately closest to the query vector without exhaustively comparing every vector in a large database.</p>
-</article>
-<article class="concept" data-search="metadata filtering restricting retrieval using structured attributes such as date, category, source, or jurisdiction before or alongside vector search.">
-<h3>Metadata Filtering</h3>
-<p>Restricting retrieval using structured attributes such as date, category, source, or jurisdiction before or alongside vector search.</p>
-</article>
-<article class="concept" data-search="reranking reordering retrieved candidates according to estimated relevance so the strongest evidence is prioritized for the llm.">
-<h3>Reranking</h3>
-<p>Reordering retrieved candidates according to estimated relevance so the strongest evidence is prioritized for the LLM.</p>
-</article>
-<article class="concept" data-search="contextual compression filtering, extracting, or summarizing retrieved passages so that only the most relevant content is passed to the llm.">
-<h3>Contextual Compression</h3>
-<p>Filtering, extracting, or summarizing retrieved passages so that only the most relevant content is passed to the LLM.</p>
-</article>
-<article class="concept" data-search="specific post-retrieval prompting explicit instructions telling the llm how to use retrieved evidence, such as grounding its answer in the supplied context and avoiding unsupported claims.">
-<h3>Specific Post-Retrieval Prompting</h3>
-<p>Explicit instructions telling the LLM how to use retrieved evidence, such as grounding its answer in the supplied context and avoiding unsupported claims.</p>
-</article>
-<article class="concept" data-search="content validation checking whether the generated answer is supported by the retrieved information and reducing hallucinated or unsupported content.">
-<h3>Content Validation</h3>
-<p>Checking whether the generated answer is supported by the retrieved information and reducing hallucinated or unsupported content.</p>
-</article>
-<article class="concept" data-search="parent document retrieval retrieving a precise smaller chunk for matching while returning its larger parent section/document to provide the llm with sufficient surrounding context.">
-<h3>Parent Document Retrieval</h3>
-<p>Retrieving a precise smaller chunk for matching while returning its larger parent section/document to provide the LLM with sufficient surrounding context.</p>
-</article>
-<article class="concept" data-search="precision the proportion of retrieved documents that are relevant: relevant retrieved items divided by all retrieved items.">
-<h3>Precision</h3>
-<p>The proportion of retrieved documents that are relevant: relevant retrieved items divided by all retrieved items.</p>
-</article>
-<article class="concept" data-search="recall the proportion of all relevant documents that the system successfully retrieves: relevant retrieved items divided by all relevant items.">
-<h3>Recall</h3>
-<p>The proportion of all relevant documents that the system successfully retrieves: relevant retrieved items divided by all relevant items.</p>
-</article>
-<article class="concept" data-search="latency the response time required to process a query.">
-<h3>Latency</h3>
-<p>The response time required to process a query.</p>
-</article>
-<article class="concept" data-search="throughput the number of queries a system can process over a given period.">
-<h3>Throughput</h3>
-<p>The number of queries a system can process over a given period.</p>
-</article>
-<article class="concept" data-search="generation quality quality of the generated response; the chapter mentions metrics such as rouge, bleu, and bertscore for comparing generated and reference text.">
-<h3>Generation Quality</h3>
-<p>Quality of the generated response; the chapter mentions metrics such as ROUGE, BLEU, and BERTScore for comparing generated and reference text.</p>
-</article>
-<article class="concept" data-search="faithfulness / citation accuracy whether the generated answer is actually supported by the retrieved documents and whether citations correctly point to the supporting information.">
-<h3>Faithfulness / Citation Accuracy</h3>
-<p>Whether the generated answer is actually supported by the retrieved documents and whether citations correctly point to the supporting information.</p>
-</article>
-<article class="concept" data-search="knowledge utilization how much of the useful retrieved information is actually incorporated into the generated answer.">
-<h3>Knowledge Utilization</h3>
-<p>How much of the useful retrieved information is actually incorporated into the generated answer.</p>
-</article>
-<article class="concept" data-search="ragas a framework used to evaluate and diagnose rag systems across retrieval and generation behavior.">
-<h3>RAGAS</h3>
-<p>A framework used to evaluate and diagnose RAG systems across retrieval and generation behavior.</p>
-</article>
-<article class="concept" data-search="human evaluation human judgment used for qualities such as factual accuracy, relevance, and clarity that automated metrics may not fully capture.">
-<h3>Human Evaluation</h3>
-<p>Human judgment used for qualities such as factual accuracy, relevance, and clarity that automated metrics may not fully capture.</p>
-</article>
-<article class="concept" data-search="why rag evaluation is harder a rag answer depends on multiple components - data preparation, retrieval, ranking, context construction, and generation - so evaluation must determine not only whether the final answer is good but also where errors originated.">
-<h3>Why RAG Evaluation Is Harder</h3>
-<p>A RAG answer depends on multiple components - data preparation, retrieval, ranking, context construction, and generation - so evaluation must determine not only whether the final answer is good but also where errors originated.</p>
-</article>
-<article class="concept" data-search="fluent but factually wrong responses fluency alone is insufficient; when an answer reads well but is unsupported or incorrect, evaluation should focus on faithfulness/factual grounding and citation accuracy.">
-<h3>Fluent but Factually Wrong Responses</h3>
-<p>Fluency alone is insufficient; when an answer reads well but is unsupported or incorrect, evaluation should focus on faithfulness/factual grounding and citation accuracy.</p>
-</article>
-</div>
-</section>
-</main>
-<footer>BUAN 3301: AI in Business • Classes 1–6 • Key Concepts &amp; Definitions</footer>
-<script>
-const search = document.getElementById('search');
-search.addEventListener('input', function() {
-  const q = this.value.trim().toLowerCase();
-  document.querySelectorAll('.concept').forEach(card => {
-    card.classList.toggle('hidden', q && !card.dataset.search.includes(q));
-  });
-  document.querySelectorAll('.chapter').forEach(section => {
-    const visible = [...section.querySelectorAll('.concept')].some(c => !c.classList.contains('hidden'));
-    section.classList.toggle('hidden', q && !visible);
-  });
-});
-</script>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-4">
+      <div class="chapter-head">
+        <div class="chapter-number">Class 4</div>
+        <h2>Advanced Prompt Engineering &amp; Reasoning</h2>
+        <div class="count">21 concepts</div>
+      </div>
+      <div class="concept-grid">
+        <article class="concept"
+          data-search="system prompt a broad directive that establishes the model's overall behavior and role. it can define tone, constraints, objectives, and interaction rules that should remain consistent across interactions.">
+          <h3>System Prompt</h3>
+          <p>A broad directive that establishes the model's overall behavior and role. It can define tone, constraints,
+            objectives, and interaction rules that should remain consistent across interactions.</p>
+        </article>
+        <article class="concept"
+          data-search="user prompt a task-specific instruction supplied during an individual interaction. it communicates the immediate request the model should complete.">
+          <h3>User Prompt</h3>
+          <p>A task-specific instruction supplied during an individual interaction. It communicates the immediate
+            request the model should complete.</p>
+        </article>
+        <article class="concept"
+          data-search="system prompt vs. user prompt the system prompt establishes general behavior and persistent guidance, while the user prompt supplies the task-specific instruction. they work together: the system prompt creates consistency and the user prompt adapts the interaction to a particular need.">
+          <h3>System Prompt vs. User Prompt</h3>
+          <p>The system prompt establishes general behavior and persistent guidance, while the user prompt supplies the
+            task-specific instruction. They work together: the system prompt creates consistency and the user prompt
+            adapts the interaction to a particular need.</p>
+        </article>
+        <article class="concept"
+          data-search="llm parameter control inference-time model parameters can be adjusted to influence output style, creativity, diversity, structure, and length without changing the model's underlying knowledge.">
+          <h3>LLM Parameter Control</h3>
+          <p>Inference-time model parameters can be adjusted to influence output style, creativity, diversity,
+            structure, and length without changing the model's underlying knowledge.</p>
+        </article>
+        <article class="concept"
+          data-search="temperature controls randomness in token selection. lower temperature emphasizes higher-probability tokens and produces more stable, deterministic, and focused output. higher temperature increases variability and creativity.">
+          <h3>Temperature</h3>
+          <p>Controls randomness in token selection. Lower temperature emphasizes higher-probability tokens and produces
+            more stable, deterministic, and focused output. Higher temperature increases variability and creativity.</p>
+        </article>
+        <article class="concept"
+          data-search="top-p a cumulative-probability threshold that limits token selection to a set of the most probable candidate tokens. it provides another way to balance focused output with diversity.">
+          <h3>Top-P</h3>
+          <p>A cumulative-probability threshold that limits token selection to a set of the most probable candidate
+            tokens. It provides another way to balance focused output with diversity.</p>
+        </article>
+        <article class="concept"
+          data-search="max length defines the maximum number of tokens the model can generate and therefore places a boundary on response length.">
+          <h3>Max Length</h3>
+          <p>Defines the maximum number of tokens the model can generate and therefore places a boundary on response
+            length.</p>
+        </article>
+        <article class="concept"
+          data-search="frequency penalty discourages repeated words or tokens by increasing the penalty as they appear repeatedly. it is used to reduce repetitive phrasing.">
+          <h3>Frequency Penalty</h3>
+          <p>Discourages repeated words or tokens by increasing the penalty as they appear repeatedly. It is used to
+            reduce repetitive phrasing.</p>
+        </article>
+        <article class="concept"
+          data-search="presence penalty discourages reuse of information or ideas that have already appeared, encouraging the model to introduce new concepts and increase variety.">
+          <h3>Presence Penalty</h3>
+          <p>Discourages reuse of information or ideas that have already appeared, encouraging the model to introduce
+            new concepts and increase variety.</p>
+        </article>
+        <article class="concept"
+          data-search="tree-of-thoughts (tot) a prompting technique that guides a model to systematically explore multiple possible reasoning paths. the model can compare alternatives and, when needed, backtrack rather than follow only one linear chain.">
+          <h3>Tree-of-Thoughts (ToT)</h3>
+          <p>A prompting technique that guides a model to systematically explore multiple possible reasoning paths. The
+            model can compare alternatives and, when needed, backtrack rather than follow only one linear chain.</p>
+        </article>
+        <article class="concept"
+          data-search="self-consistency generating multiple responses or reasoning paths to the same question and comparing them for consistency. agreement across independent responses can increase confidence in the result.">
+          <h3>Self-Consistency</h3>
+          <p>Generating multiple responses or reasoning paths to the same question and comparing them for consistency.
+            Agreement across independent responses can increase confidence in the result.</p>
+        </article>
+        <article class="concept"
+          data-search="self-refinement the model first produces an answer, then evaluates or critiques that answer, identifies weaknesses, and revises it to improve the final response.">
+          <h3>Self-Refinement</h3>
+          <p>The model first produces an answer, then evaluates or critiques that answer, identifies weaknesses, and
+            revises it to improve the final response.</p>
+        </article>
+        <article class="concept"
+          data-search="self-explanation prompting the model to explain its reasoning process. the explanation can make the reasoning more transparent and help expose inconsistencies or errors.">
+          <h3>Self-Explanation</h3>
+          <p>Prompting the model to explain its reasoning process. The explanation can make the reasoning more
+            transparent and help expose inconsistencies or errors.</p>
+        </article>
+        <article class="concept"
+          data-search="emotional amplification adding emotionally meaningful context to a prompt to improve the model's responsiveness to emotional or sensitive situations. the chapter discusses its usefulness in settings such as customer support, mental health, and social interaction.">
+          <h3>Emotional Amplification</h3>
+          <p>Adding emotionally meaningful context to a prompt to improve the model's responsiveness to emotional or
+            sensitive situations. The chapter discusses its usefulness in settings such as customer support, mental
+            health, and social interaction.</p>
+        </article>
+        <article class="concept"
+          data-search="reasoning model a model designed to handle complex multi-step tasks by breaking a problem into smaller steps, evaluating intermediate reasoning, and constructing a structured solution.">
+          <h3>Reasoning Model</h3>
+          <p>A model designed to handle complex multi-step tasks by breaking a problem into smaller steps, evaluating
+            intermediate reasoning, and constructing a structured solution.</p>
+        </article>
+        <article class="concept"
+          data-search="conventional llm vs. reasoning model the chapter contrasts conventional llms, which tend to produce direct responses based on learned language patterns, with reasoning models that explicitly decompose problems, work through intermediate steps, and provide more structured justification.">
+          <h3>Conventional LLM vs. Reasoning Model</h3>
+          <p>The chapter contrasts conventional LLMs, which tend to produce direct responses based on learned language
+            patterns, with reasoning models that explicitly decompose problems, work through intermediate steps, and
+            provide more structured justification.</p>
+        </article>
+        <article class="concept"
+          data-search="step-by-step reasoning breaking a complex task into smaller logical steps makes the reasoning process more visible and checkable. this is the central advantage highlighted for reasoning-oriented approaches.">
+          <h3>Step-by-Step Reasoning</h3>
+          <p>Breaking a complex task into smaller logical steps makes the reasoning process more visible and checkable.
+            This is the central advantage highlighted for reasoning-oriented approaches.</p>
+        </article>
+        <article class="concept"
+          data-search="chain-of-thought for complex tasks cot is the chapter's technique for prompting explicit multi-step reasoning. it is appropriate when a task benefits from showing or following a sequence of reasoning steps, such as calculations or logical analysis.">
+          <h3>Chain-of-Thought for Complex Tasks</h3>
+          <p>CoT is the chapter's technique for prompting explicit multi-step reasoning. It is appropriate when a task
+            benefits from showing or following a sequence of reasoning steps, such as calculations or logical analysis.
+          </p>
+        </article>
+        <article class="concept"
+          data-search="cot vs. tree-of-thoughts cot follows a step-by-step reasoning chain. tot expands the process by exploring multiple possible reasoning paths, comparing them, and potentially backtracking.">
+          <h3>CoT vs. Tree-of-Thoughts</h3>
+          <p>CoT follows a step-by-step reasoning chain. ToT expands the process by exploring multiple possible
+            reasoning paths, comparing them, and potentially backtracking.</p>
+        </article>
+        <article class="concept"
+          data-search="cot vs. self-consistency cot structures a reasoning path. self-consistency generates multiple answers or reasoning paths and compares them to identify a consistent result.">
+          <h3>CoT vs. Self-Consistency</h3>
+          <p>CoT structures a reasoning path. Self-consistency generates multiple answers or reasoning paths and
+            compares them to identify a consistent result.</p>
+        </article>
+        <article class="concept"
+          data-search="risks / costs of reasoning-heavy prompting the chapter cautions that more elaborate reasoning is not always necessary. reasoning-heavy prompting can require more computational resources and can produce unnecessary detail or complexity for simple tasks. longer reasoning processes also create more intermediate steps in which mistakes may occur.">
+          <h3>Risks / Costs of Reasoning-Heavy Prompting</h3>
+          <p>The chapter cautions that more elaborate reasoning is not always necessary. Reasoning-heavy prompting can
+            require more computational resources and can produce unnecessary detail or complexity for simple tasks.
+            Longer reasoning processes also create more intermediate steps in which mistakes may occur.</p>
+        </article>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-5">
+      <div class="chapter-head">
+        <div class="chapter-number">Class 5</div>
+        <h2>Retrieval-Augmented Generation</h2>
+        <div class="count">22 concepts</div>
+      </div>
+      <div class="concept-grid">
+        <article class="concept"
+          data-search="retrieval-augmented generation (rag) a system that combines retrieval of external information with an llm so generation can be grounded in relevant retrieved context.">
+          <h3>Retrieval-Augmented Generation (RAG)</h3>
+          <p>A system that combines retrieval of external information with an LLM so generation can be grounded in
+            relevant retrieved context.</p>
+        </article>
+        <article class="concept"
+          data-search="why rag rag addresses limitations of closed-book pretrained models by providing access to current, domain-specific, or proprietary information at query time and by grounding responses in retrieved sources.">
+          <h3>Why RAG</h3>
+          <p>RAG addresses limitations of closed-book pretrained models by providing access to current, domain-specific,
+            or proprietary information at query time and by grounding responses in retrieved sources.</p>
+        </article>
+        <article class="concept"
+          data-search="closed-book llm an llm that answers primarily from knowledge encoded in its parameters, without retrieving external information at query time.">
+          <h3>Closed-Book LLM</h3>
+          <p>An LLM that answers primarily from knowledge encoded in its parameters, without retrieving external
+            information at query time.</p>
+        </article>
+        <article class="concept"
+          data-search="open-book analogy rag is analogous to an open-book exam because the model can retrieve relevant external material before producing its answer.">
+          <h3>Open-Book Analogy</h3>
+          <p>RAG is analogous to an open-book exam because the model can retrieve relevant external material before
+            producing its answer.</p>
+        </article>
+        <article class="concept"
+          data-search="knowledge base the external collection of documents or information that a rag system searches.">
+          <h3>Knowledge Base</h3>
+          <p>The external collection of documents or information that a RAG system searches.</p>
+        </article>
+        <article class="concept"
+          data-search="rag pipeline user query -&gt; retrieval/search -&gt; relevant documents -&gt; retrieved context combined with the query -&gt; llm -&gt; response.">
+          <h3>RAG Pipeline</h3>
+          <p>User query -&gt; retrieval/search -&gt; relevant documents -&gt; retrieved context combined with the query
+            -&gt; LLM -&gt; response.</p>
+        </article>
+        <article class="concept"
+          data-search="knowledge-base preparation documents are split into chunks, transformed into embeddings, and stored/indexed in a vector database for later retrieval.">
+          <h3>Knowledge-Base Preparation</h3>
+          <p>Documents are split into chunks, transformed into embeddings, and stored/indexed in a vector database for
+            later retrieval.</p>
+        </article>
+        <article class="concept"
+          data-search="chunking dividing documents into smaller pieces that can be embedded, stored, and retrieved independently.">
+          <h3>Chunking</h3>
+          <p>Dividing documents into smaller pieces that can be embedded, stored, and retrieved independently.</p>
+        </article>
+        <article class="concept"
+          data-search="embedding a dense, high-dimensional numerical vector representing semantic information in a word, sentence, paragraph, or document.">
+          <h3>Embedding</h3>
+          <p>A dense, high-dimensional numerical vector representing semantic information in a word, sentence,
+            paragraph, or document.</p>
+        </article>
+        <article class="concept"
+          data-search="semantic similarity similarity in meaning represented by proximity of vectors in embedding space; closer embeddings indicate more semantically related content.">
+          <h3>Semantic Similarity</h3>
+          <p>Similarity in meaning represented by proximity of vectors in embedding space; closer embeddings indicate
+            more semantically related content.</p>
+        </article>
+        <article class="concept"
+          data-search="vector database a database optimized to store, index, and retrieve embedding vectors efficiently.">
+          <h3>Vector Database</h3>
+          <p>A database optimized to store, index, and retrieve embedding vectors efficiently.</p>
+        </article>
+        <article class="concept"
+          data-search="similarity search searching for stored vectors closest to a query vector in semantic space in order to retrieve meaningfully related content.">
+          <h3>Similarity Search</h3>
+          <p>Searching for stored vectors closest to a query vector in semantic space in order to retrieve meaningfully
+            related content.</p>
+        </article>
+        <article class="concept"
+          data-search="retrieval the stage that identifies information in the knowledge base relevant to the user's query.">
+          <h3>Retrieval</h3>
+          <p>The stage that identifies information in the knowledge base relevant to the user's query.</p>
+        </article>
+        <article class="concept"
+          data-search="augmentation adding retrieved information to the context or prompt supplied to the llm.">
+          <h3>Augmentation</h3>
+          <p>Adding retrieved information to the context or prompt supplied to the LLM.</p>
+        </article>
+        <article class="concept"
+          data-search="generation using the original query together with retrieved context to produce the final response.">
+          <h3>Generation</h3>
+          <p>Using the original query together with retrieved context to produce the final response.</p>
+        </article>
+        <article class="concept" data-search="keyword search retrieval based mainly on lexical or exact term matching.">
+          <h3>Keyword Search</h3>
+          <p>Retrieval based mainly on lexical or exact term matching.</p>
+        </article>
+        <article class="concept"
+          data-search="semantic / vector search retrieval based on embedding similarity, allowing semantically related content to be found even without identical keywords.">
+          <h3>Semantic / Vector Search</h3>
+          <p>Retrieval based on embedding similarity, allowing semantically related content to be found even without
+            identical keywords.</p>
+        </article>
+        <article class="concept"
+          data-search="hybrid search combining keyword-based and semantic/vector-based retrieval to benefit from both exact matching and semantic similarity.">
+          <h3>Hybrid Search</h3>
+          <p>Combining keyword-based and semantic/vector-based retrieval to benefit from both exact matching and
+            semantic similarity.</p>
+        </article>
+        <article class="concept"
+          data-search="reranking reordering initially retrieved documents with an additional relevance method so the most useful results are prioritized.">
+          <h3>Reranking</h3>
+          <p>Reordering initially retrieved documents with an additional relevance method so the most useful results are
+            prioritized.</p>
+        </article>
+        <article class="concept"
+          data-search="rag for domain-specific knowledge organizations can update an external knowledge base with specialized or changing information and retrieve it at query time without retraining the llm each time the knowledge changes.">
+          <h3>RAG for Domain-Specific Knowledge</h3>
+          <p>Organizations can update an external knowledge base with specialized or changing information and retrieve
+            it at query time without retraining the LLM each time the knowledge changes.</p>
+        </article>
+
+        <article class="concept"
+          data-search="rag limitation rag performance depends on the quality, freshness, chunking, indexing, and retrieval of the knowledge base; poor retrieval can still lead to incomplete or inaccurate answers.">
+          <h3>RAG Limitation</h3>
+          <p>RAG performance depends on the quality, freshness, chunking, indexing, and retrieval of the knowledge base;
+            poor retrieval can still lead to incomplete or inaccurate answers.</p>
+        </article>
+      </div>
+    </section>
+    <section class="chapter" id="chapter-6">
+      <div class="chapter-head">
+        <div class="chapter-number">Class 6</div>
+        <h2>RAG Techniques &amp; Evaluation</h2>
+        <div class="count">36 concepts</div>
+      </div>
+      <div class="concept-grid">
+        <article class="concept"
+          data-search="three rag stages rag challenges and improvements can be organized into pre-retrieval, retrieval, and post-retrieval stages.">
+          <h3>Three RAG Stages</h3>
+          <p>RAG challenges and improvements can be organized into pre-retrieval, retrieval, and post-retrieval stages.
+          </p>
+        </article>
+        <article class="concept"
+          data-search="pre-retrieval preparation of data, document organization, chunking, metadata, and queries before the system performs retrieval.">
+          <h3>Pre-Retrieval</h3>
+          <p>Preparation of data, document organization, chunking, metadata, and queries before the system performs
+            retrieval.</p>
+        </article>
+        <article class="concept"
+          data-search="retrieval the stage in which the system searches for and retrieves information relevant to the user's query.">
+          <h3>Retrieval</h3>
+          <p>The stage in which the system searches for and retrieves information relevant to the user's query.</p>
+        </article>
+        <article class="concept"
+          data-search="post-retrieval the stage in which retrieved information is prioritized, filtered, compressed, validated, and prepared for generation.">
+          <h3>Post-Retrieval</h3>
+          <p>The stage in which retrieved information is prioritized, filtered, compressed, validated, and prepared for
+            generation.</p>
+        </article>
+        <article class="concept"
+          data-search="data quality management maintaining accurate, relevant, fresh, well-organized knowledge-base content so retrieval is based on reliable information.">
+          <h3>Data Quality Management</h3>
+          <p>Maintaining accurate, relevant, fresh, well-organized knowledge-base content so retrieval is based on
+            reliable information.</p>
+        </article>
+        <article class="concept"
+          data-search="fixed-size chunking splitting a document into chunks of a predetermined length.">
+          <h3>Fixed-Size Chunking</h3>
+          <p>Splitting a document into chunks of a predetermined length.</p>
+        </article>
+        <article class="concept"
+          data-search="overlapping chunking creating chunks that share some text at their boundaries to reduce loss of context across chunk breaks.">
+          <h3>Overlapping Chunking</h3>
+          <p>Creating chunks that share some text at their boundaries to reduce loss of context across chunk breaks.</p>
+        </article>
+        <article class="concept"
+          data-search="semantic-aware chunking choosing chunk boundaries based on semantic or document structure rather than only a fixed token count.">
+          <h3>Semantic-Aware Chunking</h3>
+          <p>Choosing chunk boundaries based on semantic or document structure rather than only a fixed token count.</p>
+        </article>
+        <article class="concept"
+          data-search="hierarchical chunking maintaining relationships between small chunks and larger parent sections/documents so retrieval can combine precise matches with broader context.">
+          <h3>Hierarchical Chunking</h3>
+          <p>Maintaining relationships between small chunks and larger parent sections/documents so retrieval can
+            combine precise matches with broader context.</p>
+        </article>
+        <article class="concept"
+          data-search="chunk size trade-off chunks that are too large can dilute relevant information and reduce retrieval precision; chunks that are too small can fragment context and omit information needed to answer a question.">
+          <h3>Chunk Size Trade-Off</h3>
+          <p>Chunks that are too large can dilute relevant information and reduce retrieval precision; chunks that are
+            too small can fragment context and omit information needed to answer a question.</p>
+        </article>
+        <article class="concept"
+          data-search="query rewriting reformulating a user's query into a form that is more effective for retrieval.">
+          <h3>Query Rewriting</h3>
+          <p>Reformulating a user's query into a form that is more effective for retrieval.</p>
+        </article>
+        <article class="concept"
+          data-search="hyde hypothetical document embeddings: the model generates a hypothetical document or answer for the query; that generated text is embedded and used to retrieve similar real documents.">
+          <h3>HyDE</h3>
+          <p>Hypothetical Document Embeddings: the model generates a hypothetical document or answer for the query; that
+            generated text is embedded and used to retrieve similar real documents.</p>
+        </article>
+        <article class="concept"
+          data-search="rag fusion generating multiple related query variations, retrieving results for each, and combining/reranking the retrieval results to improve coverage and relevance.">
+          <h3>RAG Fusion</h3>
+          <p>Generating multiple related query variations, retrieving results for each, and combining/reranking the
+            retrieval results to improve coverage and relevance.</p>
+        </article>
+
+        <article class="concept"
+          data-search="hybrid search combining keyword retrieval with semantic/vector retrieval; this can recover both exact terminology and conceptually related documents, making retrieval more robust than relying on only one method.">
+          <h3>Hybrid Search</h3>
+          <p>Combining keyword retrieval with semantic/vector retrieval; this can recover both exact terminology and
+            conceptually related documents, making retrieval more robust than relying on only one method.</p>
+        </article>
+        <article class="concept"
+          data-search="reranking reordering retrieved candidates according to estimated relevance so the strongest evidence is prioritized for the llm.">
+          <h3>Reranking</h3>
+          <p>Reordering retrieved candidates according to estimated relevance so the strongest evidence is prioritized
+            for the LLM.</p>
+        </article>
+        <article class="concept"
+          data-search="contextual compression filtering, extracting, or summarizing retrieved passages so that only the most relevant content is passed to the llm.">
+          <h3>Contextual Compression</h3>
+          <p>Filtering, extracting, or summarizing retrieved passages so that only the most relevant content is passed
+            to the LLM.</p>
+        </article>
+        <article class="concept"
+          data-search="specific post-retrieval prompting explicit instructions telling the llm how to use retrieved evidence, such as grounding its answer in the supplied context and avoiding unsupported claims.">
+          <h3>Specific Post-Retrieval Prompting</h3>
+          <p>Explicit instructions telling the LLM how to use retrieved evidence, such as grounding its answer in the
+            supplied context and avoiding unsupported claims.</p>
+        </article>
+        <article class="concept"
+          data-search="parent document retrieval retrieving a precise smaller chunk for matching while returning its larger parent section/document to provide the llm with sufficient surrounding context.">
+          <h3>Parent Document Retrieval</h3>
+          <p>Retrieving a precise smaller chunk for matching while returning its larger parent section/document to
+            provide the LLM with sufficient surrounding context.</p>
+        </article>
+        <article class="concept"
+          data-search="precision the proportion of retrieved documents that are relevant: relevant retrieved items divided by all retrieved items.">
+          <h3>Precision</h3>
+          <p>The proportion of retrieved documents that are relevant: relevant retrieved items divided by all retrieved
+            items.</p>
+        </article>
+        <article class="concept"
+          data-search="recall the proportion of all relevant documents that the system successfully retrieves: relevant retrieved items divided by all relevant items.">
+          <h3>Recall</h3>
+          <p>The proportion of all relevant documents that the system successfully retrieves: relevant retrieved items
+            divided by all relevant items.</p>
+        </article>
+        <article class="concept" data-search="latency the response time required to process a query.">
+          <h3>Latency</h3>
+          <p>The response time required to process a query.</p>
+        </article>
+        <article class="concept"
+          data-search="throughput the number of queries a system can process over a given period.">
+          <h3>Throughput</h3>
+          <p>The number of queries a system can process over a given period.</p>
+        </article>
+        <article class="concept"
+          data-search="generation quality quality of the generated response; the chapter mentions metrics such as rouge, bleu, and bertscore for comparing generated and reference text.">
+          <h3>Generation Quality</h3>
+          <p>Quality of the generated response; the chapter mentions metrics such as ROUGE, BLEU, and BERTScore for
+            comparing generated and reference text.</p>
+        </article>
+        <article class="concept"
+          data-search="faithfulness whether the generated answer is actually supported by the retrieved documents and whether citations correctly point to the supporting information.">
+          <h3>Faithfulness</h3>
+          <p>Whether the generated answer is actually supported by the retrieved documents and whether citations
+            correctly point to the supporting information.</p>
+        </article>
+        <article class="concept" data-search="answer relevancy how relevant the generated answer is to the question.">
+          <h3>Answer Relevancy</h3>
+          <p>How relevant the generated answer is to the question.</p>
+        </article>
+        <article class="concept"
+          data-search="ragas a framework used to evaluate and diagnose rag systems across retrieval and generation behavior.">
+          <h3>RAGAS</h3>
+          <p>A framework used to evaluate and diagnose RAG systems across retrieval and generation behavior.</p>
+        </article>
+        <article class="concept"
+          data-search="human evaluation human judgment used for qualities such as factual accuracy, relevance, and clarity that automated metrics may not fully capture.">
+          <h3>Human Evaluation</h3>
+          <p>Human judgment used for qualities such as factual accuracy, relevance, and clarity that automated metrics
+            may not fully capture.</p>
+        </article>
+        <article class="concept"
+          data-search="why rag evaluation is harder a rag answer depends on multiple components - data preparation, retrieval, ranking, context construction, and generation - so evaluation must determine not only whether the final answer is good but also where errors originated.">
+          <h3>Why RAG Evaluation Is Harder</h3>
+          <p>A RAG answer depends on multiple components - data preparation, retrieval, ranking, context construction,
+            and generation - so evaluation must determine not only whether the final answer is good but also where
+            errors originated.</p>
+        </article>
+        <article class="concept"
+          data-search="fluent but factually wrong responses fluency alone is insufficient; when an answer reads well but is unsupported or incorrect, evaluation should focus on faithfulness/factual grounding and citation accuracy.">
+          <h3>Fluent but Factually Wrong Responses</h3>
+          <p>Fluency alone is insufficient; when an answer reads well but is unsupported or incorrect, evaluation should
+            focus on faithfulness/factual grounding and citation accuracy.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer>BUAN 3301: AI in Business • Classes 1–6 • Key Concepts &amp; Definitions</footer>
+  <script>
+    const search = document.getElementById('search');
+    search.addEventListener('input', function () {
+      const q = this.value.trim().toLowerCase();
+      document.querySelectorAll('.concept').forEach(card => {
+        card.classList.toggle('hidden', q && !card.dataset.search.includes(q));
+      });
+      document.querySelectorAll('.chapter').forEach(section => {
+        const visible = [...section.querySelectorAll('.concept')].some(c => !c.classList.contains('hidden'));
+        section.classList.toggle('hidden', q && !visible);
+      });
+    });
+  </script>
 </body>
+
 </html>
